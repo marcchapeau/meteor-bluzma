@@ -1,0 +1,13 @@
+<template name="bluzmaButton">
+  {{#if href}}
+    <a class="button {{class}}" {{others}}>
+      {{label}}
+      {{> Template.contentBlock}}
+    </a>
+  {{else}}
+    <button class="button {{class}}" {{others}}>
+      {{label}}
+      {{> Template.contentBlock}}
+    </button>
+  {{/if}}
+</template>
