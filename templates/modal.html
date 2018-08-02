@@ -1,0 +1,29 @@
+<template name="bluzmaModalCard">
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card {{class}}" {{others}}>
+      {{> Template.contentBlock}}
+    </div>
+  </div>
+</template>
+
+<template name="bluzmaModalCardHeader">
+  <header class="modal-card-head {{class}}" {{others}}>
+    <p class="modal-card-title">{{label}}</p>
+    {{#if delete}}
+      <button class="delete" aria-label="close"></button>
+    {{/if}}
+  </header>
+</template>
+
+<template name="bluzmaModalCardBody">
+  <section class="modal-card-body {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </section>
+</template>
+
+<template name="bluzmaModalCardFooter">
+  <footer class="modal-card-foot {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </footer>
+</template>
