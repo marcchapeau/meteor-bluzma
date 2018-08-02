@@ -36,7 +36,7 @@ Template.bluzmaFieldHorizontal.helpers({
     const list = {}
     for (const prop in data) if (!attributs[prop]) list[prop] = data[prop]
     // console.log('bluzmaFieldHorizontal.helpers.others', list)
-    return list
+    if (Object.keys(list).length) return list
   }
 })
 

@@ -32,7 +32,7 @@ Template.bluzmaIcon.helpers({
     const list = {}
     for (const prop in data) if (!attributs[prop]) list[prop] = data[prop]
     // console.log('bluzmaIcon.helpers.others', list)
-    return list
+    if (Object.keys(list).length) return list
   }
 })
 
