@@ -6,7 +6,8 @@ const attributs = {
   class: {class: classes => classes},
   color: {class: color => `has-text-${color}`},
   icon: true,
-  size: {class: size => `is-${size}`}
+  size: {class: size => `is-${size}`},
+  onClick: true
 }
 
 Template.bluzmaIcon.onCreated(function () {
@@ -37,6 +38,10 @@ Template.bluzmaIcon.helpers({
 })
 
 Template.bluzmaIcon.events({
+  'click .button' (evt, tpl) {
+    const onClick = Template.currentData().onClick
+    if (onClick) onClick(evt, tpl)
+  }
 })
 
 Template.bluzmaIcon.onDestroyed(function () {

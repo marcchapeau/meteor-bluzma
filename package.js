@@ -13,14 +13,30 @@ Package.onUse(function (api) {
   api.addFiles([
     'templates/button.js',
     'templates/button.html',
-    'templates/field-horizontal.js',
-    'templates/field-horizontal.html',
+    'templates/field.js',
+    'templates/field.html',
     'templates/icon.js',
     'templates/icon.html',
     'templates/modal.js',
     'templates/modal.html',
     'templates/tag.js',
-    'templates/tag.html'
+    'templates/tag.html',
+    'templates/title.html',
+    'templates/title.js',
+    'templates/subtitle.html',
+    'templates/subtitle.js',
+    'templates/table.html',
+    'templates/table.js',
+    'templates/tabs.html',
+    'templates/tabs.js',
+    'templates/card.html',
+    'templates/card.js',
+    'templates/form.html',
+    'templates/form.js',
+    'templates/columns.html',
+    'templates/columns.js',
+    'templates/select.html',
+    'templates/select.js'
   ], 'client')
   api.mainModule('bluzma.js')
 })

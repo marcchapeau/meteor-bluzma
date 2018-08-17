@@ -1,0 +1,17 @@
+<template name="bluzmaTabs">
+  <div class="tabs {{class}}" {{others}}>
+    <ul>
+      {{> Template.contentBlock}}
+    </ul>
+  </div>
+</template>
+
+<template name="bluzmaTab">
+  <li class="{{class}}" {{others}}>
+    {{#if href}}
+      <a href="{{href}}">{{label}}</a>
+    {{else}}
+      {{> Template.contentBlock}}
+    {{/if}}
+  </li>
+</template>

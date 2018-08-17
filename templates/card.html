@@ -1,0 +1,42 @@
+<template name="bluzmaCard">
+  <div class="card" {{others}}>
+    {{> Template.contentBlock}}
+  </div>
+</template>
+
+<template name="bluzmaCardImage">
+  <div class="card-image" {{others}}>
+    <figure class="image {{class}}">
+      <img src="{{src}}" alt="{{alt}}">
+    </figure>
+  </div>
+</template>
+
+
+<template name="bluzmaCardHeader">
+  <div class="card-header" {{others}}>
+    {{#if title}}
+      <p class="card-header-title">{{title}}</p>
+    {{/if}}
+    {{> Template.contentBlock}}
+  </div>
+</template>
+
+<template name="bluzmaCardHeaderIcon">
+  <div class="card-header-icon" {{others}}>
+    {{> Template.contentBlock}}
+  </div>
+</template>
+
+<template name="bluzmaCardContent">
+  <div class="card-content" {{others}}>
+    {{> Template.contentBlock}}
+  </div>
+</template>
+
+<template name="bluzmaCardFooter">
+  <footer class="card-footer" {{others}}>
+    {{> Template.contentBlock}}
+  </footer>
+</template>
+

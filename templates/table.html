@@ -1,0 +1,19 @@
+<template name="bluzmaTable">
+  <div class="table-responsive mb-0">
+    <table class="table {{class}}">
+      {{> Template.contentBlock}}
+    </table>
+  </div>
+</template>
+
+<template name="bluzmaTableHead">
+  <thead class="{{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </thead>
+</template>
+
+<template name="bluzmaTableBody">
+  <tbody class="{{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </tbody>
+</template>

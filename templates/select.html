@@ -1,0 +1,19 @@
+<template name="bluzmaSelect">
+  <div class="select {{class}}">
+    <select {{others}}>
+      {{#with defaultOption}}
+        <option value="{{value}}">{{label}}</option>
+      {{/with}}
+      {{#each option in options}}
+        {{> bluzmaSelectOption value=option.value label=option.label}}
+      {{/each}}
+      {{> Template.contentBlock}}
+    </select>
+  </div>
+</template>
+
+<template name="bluzmaSelectOption">
+  <option class="{{class}}" {{others}}>
+    {{label}}
+  </option>
+</template>

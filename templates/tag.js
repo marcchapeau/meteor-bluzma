@@ -1,16 +1,13 @@
 import { Template } from 'meteor/templating'
+import { mapAttributsToClass, mapAttributsToOthers } from '../helpers'
 
 import './tag.html'
 
-const attributs = {
-  class: {class: classes => classes},
-  color: {class: color => `is-${color}`},
-  delete: {class: () => 'is-delete'},
-  label: true,
-  onClick: true,
-  onDelete: true,
-  size: {class: size => `is-${size}`}
-}
+const attributs = [
+  'label',
+  'onClick',
+  'onDelete'
+]
 
 Template.bluzmaTag.onCreated(function () {
 })
@@ -21,18 +18,11 @@ Template.bluzmaTag.onRendered(function () {
 Template.bluzmaTag.helpers({
   class () {
     const data = Template.currentData()
-    const list = []
-    for (const prop in data) {
-      if (attributs[prop] && attributs[prop].class) {
-        list.push(attributs[prop].class(data[prop]))
-      }
-    }
-    // console.log('bluzmaTag.helpers.class', list)
-    return list.join(' ')
+    return mapAttributsToClass(data)
   },
   deleteSize () {
-    const size = Template.currentData().size
-    if (!size || size === 'medium') return 'is-small'
+    // const size = Template.currentData().isMedium
+    // if (!size || size === 'medium') return 'is-small'
   },
   isA () {
     const data = Template.currentData()
@@ -41,10 +31,7 @@ Template.bluzmaTag.helpers({
   onDelete: () => !!Template.currentData().onDelete,
   others () {
     const data = Template.currentData()
-    const list = {}
-    for (const prop in data) if (!attributs[prop]) list[prop] = data[prop]
-    // console.log('bluzmaTag.helpers.others', list)
-    if (Object.keys(list).length) return list
+    return mapAttributsToOthers(data, attributs)
   }
 })
 
