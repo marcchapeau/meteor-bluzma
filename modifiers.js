@@ -122,7 +122,7 @@ const modifiers = {
   },
   has: {
     prefix: 'has',
-    params: ['simpleHasModifiers']
+    params: [{type: 'simpleHasModifiers', childs: ['aligns'], exclude: ['justified', 'centered']}]
   },
   is: {
     prefix: 'is',
