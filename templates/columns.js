@@ -18,7 +18,7 @@ const SIZES = {
   '4/5': 'four-fifths',
   full: 'full'
 }
-for (let n = 1; n <= 12; n++) SIZES[n] = `${n}`
+for (let n = 0; n <= 12; n++) SIZES[n] = `${n}`
 
 // Columns
 
@@ -31,12 +31,11 @@ bluzmaColumns.helpers({
   desktop: () => Template.currentData().desktop && 'is-desktop',
   gap: () => {
     const size = Template.currentData().gap
-    if (typeof size !== 'undefined') return `is-${size}`
+    if (typeof size !== 'undefined') return `is-variable is-${size}`
   },
   gapless: () => Template.currentData().gapless && 'is-gapless',
   mobile: () => Template.currentData().mobile && 'is-mobile',
   multiline: () => Template.currentData().multiline && 'is-multiline',
-  variable: () => Template.currentData().variable && 'is-variable',
   vCentered: () => Template.currentData().vCentered && 'is-vCentered'
 })
 
@@ -63,7 +62,8 @@ bluzmaColumn.helpers({
     const offset = Template.currentData().offset
     if (typeof offset !== 'undefined') list.push(`is-offset-${SIZES[offset]}`)
     DEVICES.forEach(d => {
-      const offset = Template.currentData()[`${d}Offset`]
+      const name = `${d}Offset`
+      const offset = Template.currentData()[name]
       if (typeof offset !== 'undefined') list.push(`is-offset-${SIZES[offset]}-${d}`)
     })
     return list.join(' ')
@@ -73,7 +73,8 @@ bluzmaColumn.helpers({
     const size = Template.currentData().size
     if (typeof size !== 'undefined') list.push(`is-${SIZES[size]}`)
     DEVICES.forEach(d => {
-      const size = Template.currentData()[`${d}Size`]
+      const name = `${d}Size`
+      const size = Template.currentData()[name]
       if (typeof size !== 'undefined') list.push(`is-${SIZES[size]}-${d}`)
     })
     return list.join(' ')

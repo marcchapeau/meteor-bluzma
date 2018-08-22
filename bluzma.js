@@ -41,7 +41,7 @@ const COLORS = {
 }
 const SIZES = [1, 2, 3, 4, 5, 6, 7]
 const ALIGNMENTS = {
-  center: 'centered', justify: 'justified', left: 'left', right: 'right'
+  centered: 'centered', justified: 'justified', left: 'left', right: 'right'
 }
 
 const classes = {}
