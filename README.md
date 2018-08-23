@@ -100,3 +100,10 @@ widescreenOffset | `Number`<br>`String` | `0` `1` ... `12`<br>`"1/2"` `"1/3"` `"
 widescreenSize | `Number`<br>`String` | `1` `2` ... `12`<br>`"1/2"` `"1/3"` `"2/3"` `"1/4"` `"3/4"` `"1/5"` `"2/5"` `"3/5"` `"4/5"` `full`
 fullhdOffset | `Number`<br>`String` | `0` `1` ... `12`<br>`"1/2"` `"1/3"` `"2/3"` `"1/4"` `"3/4"` `"1/5"` `"2/5"` `"3/5"` `"4/5"` `full`
 fullhdSize | `Number`<br>`String` | `1` `2` ... `12`<br>`"1/2"` `"1/3"` `"2/3"` `"1/4"` `"3/4"` `"1/5"` `"2/5"` `"3/5"` `"4/5"` `full`
+
+### Elements
+#### Icon
+Attribut | Type | Values
+-------- | -----|------------
+size | `String` | `"small"` `"medium"` `"large"`
+icon | `String` | Example `"far fa-user"`

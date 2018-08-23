@@ -1,5 +1,8 @@
 <template name="bluzmaIcon">
-  <span class="icon {{class}}" {{others}}>
-    <i class="{{icon}}"></i>
+  <span class="icon {{size}} {{class}}" {{others}}>
+    {{#if icon}}
+      <i class="{{icon}}"></i>
+    {{/if}}
+    {{> Template.contentBlock}}
   </span>
 </template>

@@ -116,10 +116,7 @@ class Bluzma {
     }
   }
   hooks (hooks) { this._hooks = {...this._hooks, ...hooks} }
-  helpers (helpers) {
-    this._helpers = {...this._helpers, ...helpers}
-    console.log(this.name, this._helpers)
-  }
+  helpers (helpers) { this._helpers = {...this._helpers, ...helpers} }
   events (events) { this._events = {...this._events, ...events} }
   register () {
     const self = this
