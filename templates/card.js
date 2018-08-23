@@ -1,57 +1,54 @@
 import { Template } from 'meteor/templating'
+import Bluzma from 'meteor/chap:bluzma/bluzma'
 
 import './card.html'
 
-const others = (data, attrs) =>
-  Object.keys(data)
-    .filter(k => !attrs[k])
-    .reduce((props, key) => ({...props, [key]: data[key]}), {})
+// https://bulma.io/documentation/components/card
 
-const cardImageAttributs = {
-  src: true,
-  size: {class: size => `is-${size}`},
-  alt: true
-}
+//  Card
 
-const cardHeaderAttributs = {
-  title: true
-}
+const bluzmaCard = new Bluzma('Card')
 
-const cardContentAttributs = {
-  class: {class: classes => classes}
-}
+bluzmaCard.register()
 
-Template.bluzmaCardImage.helpers({
-  class () {
-    const data = Template.currentData()
-    return Object.keys(data)
-      .filter(k => cardImageAttributs[k] && cardImageAttributs[k].class)
-      .map(k => cardImageAttributs[k].class(data[k]))
-      .join(' ')
-  },
-  others () {
-    const data = Template.currentData()
-    return others(data, cardImageAttributs)
-  }
-})
+// Card image
 
-Template.bluzmaCardHeader.helpers({
-  others () {
-    const data = Template.currentData()
-    return others(data, cardHeaderAttributs)
-  }
-})
+const bluzmaCardImage = new Bluzma('CardImage')
 
-Template.bluzmaCardContent.helpers({
-  class () {
-    const data = Template.currentData()
-    return Object.keys(data)
-      .filter(k => cardContentAttributs[k] && cardContentAttributs[k].class)
-      .map(k => cardContentAttributs[k].class(data[k]))
-      .join(' ')
-  },
-  others () {
-    const data = Template.currentData()
-    return others(data, cardContentAttributs)
-  }
-})
+bluzmaCardImage.register()
+
+// Card header
+
+const bluzmaCardHeader = new Bluzma('CardHeader')
+
+bluzmaCardHeader.register()
+
+// Card header title
+
+const bluzmaCardHeaderTitle = new Bluzma('CardHeaderTitle', ['content'])
+
+bluzmaCardHeaderTitle.register()
+
+// Card header icon
+
+const bluzmaCardHeaderIcon = new Bluzma('CardHeaderIcon', ['icon'])
+
+bluzmaCardHeaderIcon.register()
+
+// Card content
+
+const bluzmaCardContent = new Bluzma('CardContent')
+
+bluzmaCardContent.register()
+
+// Card footer
+
+const bluzmaCardFooter = new Bluzma('CardFooter')
+
+bluzmaCardFooter.register()
+
+// Card footer item
+
+const bluzmaCardFooterItem = new Bluzma('CardFooterItem')
+
+bluzmaCardFooterItem.register()

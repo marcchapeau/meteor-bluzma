@@ -5,38 +5,48 @@
 </template>
 
 <template name="bluzmaCardImage">
-  <div class="card-image" {{others}}>
-    <figure class="image {{class}}">
-      <img src="{{src}}" alt="{{alt}}">
-    </figure>
+  <div class="card-image {{class}}" {{others}}>
+    {{> Template.contentBlock}}
   </div>
 </template>
 
-
 <template name="bluzmaCardHeader">
-  <div class="card-header" {{others}}>
-    {{#if title}}
-      <p class="card-header-title">{{title}}</p>
+  <header class="card-header {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </header>
+</template>
+
+<template name="bluzmaCardHeaderTitle">
+  <p class="card-header-title {{class}}" {{others}}>
+    {{content}}
+    {{> Template.contentBlock}}
+  </p>
+</template>
+
+<template name="bluzmaCardHeaderIcon">
+  <div class="card-header-icon {{class}}" {{others}}>
+    {{#if icon}}
+      {{> bluzmaIcon icon=icon}}
     {{/if}}
     {{> Template.contentBlock}}
   </div>
 </template>
 
-<template name="bluzmaCardHeaderIcon">
-  <div class="card-header-icon" {{others}}>
-    {{> Template.contentBlock}}
-  </div>
-</template>
-
 <template name="bluzmaCardContent">
-  <div class="card-content" {{others}}>
+  <div class="card-content {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </div>
 </template>
 
 <template name="bluzmaCardFooter">
-  <footer class="card-footer" {{others}}>
+  <footer class="card-footer {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </footer>
+</template>
+
+<template name="bluzmaCardFooterItem">
+  <p class="card-footer-item {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </p>
 </template>
 

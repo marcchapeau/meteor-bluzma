@@ -91,44 +91,52 @@ classes.italic = () => 'is-italic'
 classes.textWeight = (weight) => `has-text-weight-${weight}`
 
 class Bluzma {
-  constructor (name, attributs) {
+  constructor (name, attributs = []) {
+    const instance = this
     this.name = name
     attributs = typeof attributs === 'function' ? attributs.apply(null) : attributs
-    this.attributs = attributs
+    this.attributs = ['onClick', ...attributs]
     this._hooks = {}
     this._helpers = {
       class: function () {
         const data = Template.currentData()
-        return `${Object.keys(data).filter(key => classes[key])
+        const res = `${Object.keys(data).filter(key => classes[key])
           .map(key => classes[key](data[key])).join(' ')}${data.class ? ` ${data.class}` : ''}`
+        return res
       },
       others: function () {
+        const attributs = instance.attributs
         const data = Template.currentData()
-        return Object.keys(data).filter(key => {
+        const res = Object.keys(data).filter(key => {
           return !classes[key] && !attributs.includes(key) && key !== 'class'
         }).reduce((others, key) => {
           others[key] = data[key]
           return others
         }, {})
+        return res
       }
     }
     this._events = {
+      'click' (tpl, evt) {
+        const onClick = Template.currentData().onClick
+        if (onClick) onClick.call(this, tpl, evt)
+      }
     }
   }
   hooks (hooks) { this._hooks = {...this._hooks, ...hooks} }
   helpers (helpers) { this._helpers = {...this._helpers, ...helpers} }
   events (events) { this._events = {...this._events, ...events} }
   register () {
-    const self = this
+    const instance = this
     const name = `bluzma${this.name}`
     Template[name].onCreated(function () {
-      if (self._hooks.created) self._hooks.created.apply(this)
+      if (instance._hooks.created) instance._hooks.created.call(this)
     })
     Template[name].onRendered(function () {
-      if (self._hooks.rendered) self._hooks.rendered.apply(this)
+      if (instance._hooks.rendered) instance._hooks.rendered.call(this)
     })
     Template[name].onDestroyed(function () {
-      if (self._hooks.destroyed) self._hooks.destroyed.apply(this)
+      if (instance._hooks.destroyed) instance._hooks.destroyed.call(this)
     })
     Template[name].helpers(this._helpers)
     Template[name].events(this._events)

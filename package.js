@@ -13,6 +13,7 @@ Package.onUse(function (api) {
   api.addFiles([
     'templates/button.js',
     'templates/button.html',
+    'templates/card.js',
     'templates/columns.js',
     'templates/field.js',
     'templates/field.html',
@@ -26,8 +27,6 @@ Package.onUse(function (api) {
     'templates/table.js',
     'templates/tabs.html',
     'templates/tabs.js',
-    'templates/card.html',
-    'templates/card.js',
     'templates/form.html',
     'templates/form.js',
     'templates/select.html',
