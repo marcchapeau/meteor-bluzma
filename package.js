@@ -13,11 +13,13 @@ Package.onUse(function (api) {
   api.addFiles([
     'templates/button.js',
     'templates/button.html',
+    'templates/breadcrumb.js',
     'templates/card.js',
     'templates/columns.js',
     'templates/field.js',
     'templates/field.html',
     'templates/icon.js',
+    'templates/link.js',
     'templates/modal.js',
     'templates/modal.html',
     'templates/tag.js',

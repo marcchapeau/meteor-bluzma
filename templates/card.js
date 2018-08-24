@@ -1,4 +1,3 @@
-import { Template } from 'meteor/templating'
 import Bluzma from 'meteor/chap:bluzma/bluzma'
 
 import './card.html'
@@ -49,6 +48,6 @@ bluzmaCardFooter.register()
 
 // Card footer item
 
-const bluzmaCardFooterItem = new Bluzma('CardFooterItem')
+const bluzmaCardFooterItem = new Bluzma('CardFooterItem', ['href'])
 
 bluzmaCardFooterItem.register()

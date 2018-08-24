@@ -1,5 +1,5 @@
 <template name="bluzmaCard">
-  <div class="card" {{others}}>
+  <div class="card {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </div>
 </template>
@@ -45,8 +45,14 @@
 </template>
 
 <template name="bluzmaCardFooterItem">
-  <p class="card-footer-item {{class}}" {{others}}>
-    {{> Template.contentBlock}}
-  </p>
+  {{#if href}}
+    <a class="card-footer-item {{class}}" href="{{href}}" {{others}}>
+      {{> Template.contentBlock}}
+    </a>
+  {{else}}
+    <p class="card-footer-item {{class}}" {{others}}>
+      {{> Template.contentBlock}}
+    </p>
+  {{/if}}
 </template>
 

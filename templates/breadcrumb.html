@@ -1,0 +1,17 @@
+<template name="bluzmaBreadcrumb">
+  <nav class="breadcrumb {{class}}" {{others}}>
+    <ul>
+      {{> Template.contentBlock}}
+    </ul>
+  </nav>
+</template>
+
+<template name="bluzmaBreadcrumbItem">
+  <li class="{{active}} {{class}}" {{others}}>
+    {{#if content}}
+      <a href="{{href}}">{{content}}</a>
+    {{else}}
+      {{> Template.contentBlock}}
+    {{/if}}
+  </li>
+</template>
