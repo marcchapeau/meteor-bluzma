@@ -1,19 +1,25 @@
 <template name="bluzmaTag">
   {{#if isA}}
-    <a class="tag {{class}}" {{others}}>
-      {{label}}
+    <a class="tag {{color}} {{delete}} {{size}} {{class}}" {{others}}>
+      {{content}}
       {{> Template.contentBlock}}
       {{#if onDelete}}
         <button class="delete {{deleteSize}}"></button>
       {{/if}}
     </a>
   {{else}}
-    <span class="tag {{class}}" {{others}}>
-      {{label}}
+    <span class="tag {{color}} {{delete}} {{size}} {{class}}" {{others}}>
+      {{content}}
       {{> Template.contentBlock}}
       {{#if onDelete}}
         <button class="delete {{deleteSize}}"></button>
       {{/if}}
     </span>
   {{/if}}
+</template>
+
+<template name="bluzmaTags">
+  <div class="tags {{addons}} {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </div>
 </template>

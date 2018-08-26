@@ -11,9 +11,8 @@ Package.onUse(function (api) {
   api.use('ecmascript')
   api.use('templating@1.3.2')
   api.addFiles([
-    'templates/button.js',
-    'templates/button.html',
     'templates/breadcrumb.js',
+    'templates/button.js',
     'templates/card.js',
     'templates/columns.js',
     'templates/field.js',
@@ -23,7 +22,6 @@ Package.onUse(function (api) {
     'templates/modal.js',
     'templates/modal.html',
     'templates/tag.js',
-    'templates/tag.html',
     'templates/title.js',
     'templates/table.html',
     'templates/table.js',
