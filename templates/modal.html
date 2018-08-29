@@ -1,15 +1,24 @@
-<template name="bluzmaModalCard">
-  <div class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card {{class}}" {{atts}}>
-      {{> Template.contentBlock}}
-    </div>
+<template name="bluzmaModal">
+  <div class="modal {{class}}" {{others}}>
+    {{#if background}}
+      <div class="modal-background"></div>
+    {{/if}}
+    {{> Template.contentBlock}}
   </div>
 </template>
 
-<template name="bluzmaModalCardHeader">
+<template name="bluzmaModalCard">
+  <div class="modal-card {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </div>
+</template>
+
+<template name="bluzmaModalCardHead">
   <header class="modal-card-head {{class}}" {{others}}>
-    <p class="modal-card-title">{{label}}</p>
+    {{#if content}}
+      <p class="modal-card-title">{{content}}</p>
+    {{/if}}
+    {{> Template.contentBlock}}
     {{#if delete}}
       <button class="delete" aria-label="close"></button>
     {{/if}}
@@ -22,7 +31,7 @@
   </section>
 </template>
 
-<template name="bluzmaModalCardFooter">
+<template name="bluzmaModalCardFoot">
   <footer class="modal-card-foot {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </footer>

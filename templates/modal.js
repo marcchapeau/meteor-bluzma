@@ -1,120 +1,43 @@
 import { Template } from 'meteor/templating'
+import Bluzma from 'meteor/chap:bluzma/bluzma'
 
 import './modal.html'
 
-Template.bluzmaModalCard.onCreated(function () {
-  this.attributs = {
-    class: {class: classes => classes}
+// https://bulma.io/documentation/components/modal
+
+//  Modal
+
+const bluzmaModal = new Bluzma('Modal', ['background'])
+
+bluzmaModal.helpers({
+  background: () => {
+    const bg = Template.currentData().background
+    return typeof bg === 'undefined' ? true : bg
   }
 })
 
-Template.bluzmaModalCard.helpers({
-  class () {
-    const data = Template.currentData()
-    const attributs = Template.instance().attributs
-    const list = []
-    for (const prop in data) {
-      if (attributs[prop] && attributs[prop].class) {
-        list.push(attributs[prop].class(data[prop]))
-      }
-    }
-    // console.log('bluzmaModalCard.helpers.class', list)
-    return list.join(' ')
-  },
-  others () {
-    const data = Template.currentData()
-    const attributs = Template.instance().attributs
-    const list = {}
-    for (const prop in data) if (!attributs[prop]) list[prop] = data[prop]
-    // console.log('bluzmaModalCard.helpers.others', list)
-    if (Object.keys(list).length) return list
-  }
-})
+bluzmaModal.register()
 
-Template.bluzmaModalCardHeader.onCreated(function () {
-  this.attributs = {
-    class: {class: classes => classes},
-    label: true
-  }
-})
+//  Modal card
 
-Template.bluzmaModalCardHeader.helpers({
-  class () {
-    const data = Template.currentData()
-    const attributs = Template.instance().attributs
-    const list = []
-    for (const prop in data) {
-      if (attributs[prop] && attributs[prop].class) {
-        list.push(attributs[prop].class(data[prop]))
-      }
-    }
-    // console.log('bluzmaModalCardHeader.helpers.class', list)
-    return list.join(' ')
-  },
-  others () {
-    const data = Template.currentData()
-    const attributs = Template.instance().attributs
-    const list = {}
-    for (const prop in data) if (!attributs[prop]) list[prop] = data[prop]
-    // console.log('bluzmaModalCardHeader.helpers.others', list)
-    if (Object.keys(list).length) return list
-  }
-})
+const bluzmaModalCard = new Bluzma('ModalCard')
 
-Template.bluzmaModalCardBody.onCreated(function () {
-  this.attributs = {
-    class: {class: classes => classes}
-  }
-})
+bluzmaModalCard.register()
 
-Template.bluzmaModalCardBody.helpers({
-  class () {
-    const data = Template.currentData()
-    const attributs = Template.instance().attributs
-    const list = []
-    for (const prop in data) {
-      if (attributs[prop] && attributs[prop].class) {
-        list.push(attributs[prop].class(data[prop]))
-      }
-    }
-    // console.log('bluzmaModalCardBody.helpers.class', list)
-    return list.join(' ')
-  },
-  others () {
-    const data = Template.currentData()
-    const attributs = Template.instance().attributs
-    const list = {}
-    for (const prop in data) if (!attributs[prop]) list[prop] = data[prop]
-    // console.log('bluzmaModalCardBody.helpers.others', list)
-    if (Object.keys(list).length) return list
-  }
-})
+//  Modal card head
 
-Template.bluzmaModalCardFooter.onCreated(function () {
-  this.attributs = {
-    class: {class: classes => classes}
-  }
-})
+const bluzmaModalCardHead = new Bluzma('ModalCardHead', ['content', 'delete'])
 
-Template.bluzmaModalCardFooter.helpers({
-  class () {
-    const data = Template.currentData()
-    const attributs = Template.instance().attributs
-    const list = []
-    for (const prop in data) {
-      if (attributs[prop] && attributs[prop].class) {
-        list.push(attributs[prop].class(data[prop]))
-      }
-    }
-    // console.log('bluzmaModalCardFooter.helpers.class', list)
-    return list.join(' ')
-  },
-  others () {
-    const data = Template.currentData()
-    const attributs = Template.instance().attributs
-    const list = {}
-    for (const prop in data) if (!attributs[prop]) list[prop] = data[prop]
-    // console.log('bluzmaModalCardFooter.helpers.others', list)
-    if (Object.keys(list).length) return list
-  }
-})
+bluzmaModalCardHead.register()
+
+//  Modal card body
+
+const bluzmaModalCardBody = new Bluzma('ModalCardBody')
+
+bluzmaModalCardBody.register()
+
+//  Modal card foot
+
+const bluzmaModalCardFoot = new Bluzma('ModalCardFoot')
+
+bluzmaModalCardFoot.register()
