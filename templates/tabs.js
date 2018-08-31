@@ -1,20 +1,20 @@
-import { Template } from 'meteor/templating'
+// import { Template } from 'meteor/templating'
 
-import { mapAttributsToClass, mapAttributsToOthers } from '../helpers'
+// import { mapAttributsToClass, mapAttributsToOthers } from '../helpers'
 
-const tabAttributs = [
-  'href',
-  'label'
-]
+// const tabAttributs = [
+//   'href',
+//   'label'
+// ]
 
-const tabsAttributs = []
+// const tabsAttributs = []
 
-Template.bluzmaTabs.helpers({
-  class () { return mapAttributsToClass(Template.currentData()) },
-  others () { return mapAttributsToOthers(Template.currentData(), tabsAttributs) }
-})
+// Template.bluzmaTabs.helpers({
+//   class () { return mapAttributsToClass(Template.currentData()) },
+//   others () { return mapAttributsToOthers(Template.currentData(), tabsAttributs) }
+// })
 
-Template.bluzmaTab.helpers({
-  class () { return mapAttributsToClass(Template.currentData()) },
-  others () { return mapAttributsToOthers(Template.currentData(), tabAttributs) }
-})
+// Template.bluzmaTab.helpers({
+//   class () { return mapAttributsToClass(Template.currentData()) },
+//   others () { return mapAttributsToOthers(Template.currentData(), tabAttributs) }
+// })

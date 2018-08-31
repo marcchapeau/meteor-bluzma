@@ -1,23 +1,23 @@
-import { Template } from 'meteor/templating'
-import { mapAttributsToClass, mapAttributsToOthers } from '../helpers'
+// import { Template } from 'meteor/templating'
+// import { mapAttributsToClass, mapAttributsToOthers } from '../helpers'
 
-const tableAttributs = []
+// const tableAttributs = []
 
-Template.bluzmaTable.helpers({
-  class () { return mapAttributsToClass(Template.currentData()) },
-  others () { return mapAttributsToOthers(Template.currentData(), tableAttributs) }
-})
+// Template.bluzmaTable.helpers({
+//   class () { return mapAttributsToClass(Template.currentData()) },
+//   others () { return mapAttributsToOthers(Template.currentData(), tableAttributs) }
+// })
 
-const tableHeadAttributs = []
+// const tableHeadAttributs = []
 
-Template.bluzmaTableHead.helpers({
-  class () { return mapAttributsToClass(Template.currentData()) },
-  others () { return mapAttributsToOthers(Template.currentData(), tableHeadAttributs) }
-})
+// Template.bluzmaTableHead.helpers({
+//   class () { return mapAttributsToClass(Template.currentData()) },
+//   others () { return mapAttributsToOthers(Template.currentData(), tableHeadAttributs) }
+// })
 
-const tableBodyAttributs = []
+// const tableBodyAttributs = []
 
-Template.bluzmaTableBody.helpers({
-  class () { return mapAttributsToClass(Template.currentData()) },
-  others () { return mapAttributsToOthers(Template.currentData(), tableBodyAttributs) }
-})
+// Template.bluzmaTableBody.helpers({
+//   class () { return mapAttributsToClass(Template.currentData()) },
+//   others () { return mapAttributsToOthers(Template.currentData(), tableBodyAttributs) }
+// })
