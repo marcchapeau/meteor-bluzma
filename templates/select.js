@@ -2,7 +2,7 @@
 
 // import { mapAttributsToClass, mapAttributsToOthers } from '../helpers'
 
-import './select.html'
+// import './select.html'
 
 // const attributs = [
 //   'options',
