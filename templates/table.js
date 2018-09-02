@@ -45,6 +45,10 @@ bluzmaTableRow.helpers({
 
 bluzmaTableRow.register()
 
+const bluzmaTableCell = new Bluzma('TableCell')
+
+bluzmaTableCell.register()
+
 const bluzmaTableHead = new Bluzma('TableHead')
 
 bluzmaTableHead.register()
