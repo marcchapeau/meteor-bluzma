@@ -1,13 +1,39 @@
 <template name="bluzmaTable">
-  <div class="table-responsive mb-0">
-    <table class="table {{class}}">
+  {{#if responsive}}
+    <div style="display: block;overflow-y: auto;width: 100%;">
+      <table class="table {{bordered}} {{fullwidth}} {{hoverable}} {{narrow}} {{striped}} {{class}}" {{others}}>
+        {{> Template.contentBlock}}
+      </table>
+    </div>
+  {{else}}
+    <table class="table {{bordered}} {{fullwidth}} {{hoverable}} {{narrow}} {{striped}} {{class}}" {{others}}>
       {{> Template.contentBlock}}
     </table>
-  </div>
+  {{/if}}
+</template>
+
+<template name="bluzmaTableRow">
+  <tr class="{{selected}} {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </tr>
+</template>
+
+<template name="bluzmaTableCell">
+  {{#if heading}}
+    <th class="{{class}}" {{others}}>
+      {{content}}
+      {{> Template.contentBlock}}
+    </th>
+  {{else}}
+    <td class="{{class}}" {{others}}>
+      {{content}}
+      {{> Template.contentBlock}}
+    </td>
+  {{/if}}
 </template>
 
 <template name="bluzmaTableHead">
-  <thead class="{{class}}" {{others}}>
+  <thead class="{{selected}} {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </thead>
 </template>
@@ -16,4 +42,10 @@
   <tbody class="{{class}}" {{others}}>
     {{> Template.contentBlock}}
   </tbody>
+</template>
+
+<template name="bluzmaTableFoot">
+  <tfoot class="{{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </tfoot>
 </template>

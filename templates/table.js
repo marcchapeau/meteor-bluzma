@@ -1,23 +1,58 @@
-// import { Template } from 'meteor/templating'
-// import { mapAttributsToClass, mapAttributsToOthers } from '../helpers'
+import { Template } from 'meteor/templating'
+import Bluzma from 'meteor/chap:bluzma/bluzma'
 
-// const tableAttributs = []
+import './table.html'
 
-// Template.bluzmaTable.helpers({
-//   class () { return mapAttributsToClass(Template.currentData()) },
-//   others () { return mapAttributsToOthers(Template.currentData(), tableAttributs) }
-// })
+// https://bulma.io/documentation/elements/table
 
-// const tableHeadAttributs = []
+const bluzmaTable = new Bluzma('Table', [
+  'bordered', 'fullwidth', 'hoverable', 'narrow', 'responsive', 'striped'
+])
 
-// Template.bluzmaTableHead.helpers({
-//   class () { return mapAttributsToClass(Template.currentData()) },
-//   others () { return mapAttributsToOthers(Template.currentData(), tableHeadAttributs) }
-// })
+bluzmaTable.helpers({
+  bordered () {
+    const bordered = Template.currentData().bordered
+    return bordered && `is-${bordered}`
+  },
+  fullwidth () {
+    const fullwidth = Template.currentData().fullwidth
+    return fullwidth && `is-${fullwidth}`
+  },
+  hoverable () {
+    const hoverable = Template.currentData().hoverable
+    return hoverable && `is-${hoverable}`
+  },
+  narrow () {
+    const narrow = Template.currentData().narrow
+    return narrow && `is-${narrow}`
+  },
+  striped () {
+    const striped = Template.currentData().striped
+    return striped && `is-${striped}`
+  }
+})
 
-// const tableBodyAttributs = []
+bluzmaTable.register()
 
-// Template.bluzmaTableBody.helpers({
-//   class () { return mapAttributsToClass(Template.currentData()) },
-//   others () { return mapAttributsToOthers(Template.currentData(), tableBodyAttributs) }
-// })
+const bluzmaTableRow = new Bluzma('TableRow', ['selected'])
+
+bluzmaTableRow.helpers({
+  selected () {
+    const selected = Template.currentData().selected
+    return selected && `is-${selected}`
+  }
+})
+
+bluzmaTableRow.register()
+
+const bluzmaTableHead = new Bluzma('TableHead')
+
+bluzmaTableHead.register()
+
+const bluzmaTableBody = new Bluzma('TableBody')
+
+bluzmaTableBody.register()
+
+const bluzmaTableFoot = new Bluzma('TableFoot')
+
+bluzmaTableFoot.register()
