@@ -12,23 +12,23 @@ const bluzmaTable = new Bluzma('Table', [
 bluzmaTable.helpers({
   bordered () {
     const bordered = Template.currentData().bordered
-    return bordered && `is-${bordered}`
+    return bordered && `is-bordered`
   },
   fullwidth () {
     const fullwidth = Template.currentData().fullwidth
-    return fullwidth && `is-${fullwidth}`
+    return fullwidth && `is-fullwidth`
   },
   hoverable () {
     const hoverable = Template.currentData().hoverable
-    return hoverable && `is-${hoverable}`
+    return hoverable && `is-hoverable`
   },
   narrow () {
     const narrow = Template.currentData().narrow
-    return narrow && `is-${narrow}`
+    return narrow && `is-narrow`
   },
   striped () {
     const striped = Template.currentData().striped
-    return striped && `is-${striped}`
+    return striped && `is-striped`
   }
 })
 
@@ -39,7 +39,7 @@ const bluzmaTableRow = new Bluzma('TableRow', ['selected'])
 bluzmaTableRow.helpers({
   selected () {
     const selected = Template.currentData().selected
-    return selected && `is-${selected}`
+    return selected && `is-selected`
   }
 })
 
