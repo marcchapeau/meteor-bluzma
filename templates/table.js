@@ -45,7 +45,14 @@ bluzmaTableRow.helpers({
 
 bluzmaTableRow.register()
 
-const bluzmaTableCell = new Bluzma('TableCell')
+const bluzmaTableCell = new Bluzma('TableCell', ['selected'])
+
+bluzmaTableCell.helpers({
+  selected () {
+    const selected = Template.currentData().selected
+    return selected && `is-selected`
+  }
+})
 
 bluzmaTableCell.register()
 

@@ -20,12 +20,12 @@
 
 <template name="bluzmaTableCell">
   {{#if heading}}
-    <th class="{{class}}" {{others}}>
+    <th class="{{selected}} {{class}}" {{others}}>
       {{content}}
       {{> Template.contentBlock}}
     </th>
   {{else}}
-    <td class="{{class}}" {{others}}>
+    <td class="{{selected}} {{class}}" {{others}}>
       {{content}}
       {{> Template.contentBlock}}
     </td>
@@ -33,7 +33,7 @@
 </template>
 
 <template name="bluzmaTableHead">
-  <thead class="{{selected}} {{class}}" {{others}}>
+  <thead class="{{class}}" {{others}}>
     {{> Template.contentBlock}}
   </thead>
 </template>
