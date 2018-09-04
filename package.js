@@ -30,7 +30,8 @@ Package.onUse(function (api) {
     'templates/form.html',
     'templates/form.js',
     'templates/select.html',
-    'templates/select.js'
+    'templates/select.js',
+    'templates/span.js'
   ], 'client')
   api.mainModule('bluzma.js')
 })
