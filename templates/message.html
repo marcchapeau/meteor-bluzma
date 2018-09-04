@@ -20,6 +20,8 @@
 </template>
 
 <template name="bluzmaMessageBody">
-  {{content}}
-  {{> Template.contentBlock}}
+  <div class="message-body {{class}}" {{others}}>
+    {{content}}
+    {{> Template.contentBlock}}
+  </div>
 </template>
