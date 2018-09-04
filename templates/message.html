@@ -1,0 +1,17 @@
+<template name="bluzmaMessage">
+  <article class="message {{color}} {{size}} {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </article>
+</template>
+
+<template name="bluzmaMessageHeader">
+  <div class="message-header {{class}}" {{others}}>
+    {{#if content}}
+      <p>{{content}}</p>
+    {{/if}}
+    {{> Template.contentBlock}}
+    {{#if delete}}
+      <button class="delete" aria-label="delete"></button>
+    {{/if}}
+  </div>
+</template>

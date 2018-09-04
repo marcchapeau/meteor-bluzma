@@ -20,6 +20,7 @@ Package.onUse(function (api) {
     'templates/field.html',
     'templates/icon.js',
     'templates/link.js',
+    'templates/message.js',
     'templates/modal.js',
     'templates/tag.js',
     'templates/title.js',
