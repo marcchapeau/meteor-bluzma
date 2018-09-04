@@ -5,7 +5,7 @@ import './message.html'
 
 // https://bulma.io/documentation/components/message
 
-const bluzmaMessage = new Bluzma('Message', ['color', 'size'])
+const bluzmaMessage = new Bluzma('Message', ['color', 'content', 'size'])
 
 bluzmaMessage.helpers({
   color () {
@@ -20,6 +20,10 @@ bluzmaMessage.helpers({
 
 bluzmaMessage.register()
 
-const bluzmaMessageHeader = new Bluzma('Message', ['content', 'delete'])
+const bluzmaMessageHeader = new Bluzma('MessageHeader', ['content', 'delete'])
 
 bluzmaMessageHeader.register()
+
+const bluzmaMessageBody = new Bluzma('MessageBody', ['content'])
+
+bluzmaMessageBody.register()

@@ -1,5 +1,8 @@
 <template name="bluzmaMessage">
   <article class="message {{color}} {{size}} {{class}}" {{others}}>
+    {{#if content}}
+      {{> bluzmaMessageBody content=content}}
+    {{/if}}
     {{> Template.contentBlock}}
   </article>
 </template>
@@ -14,4 +17,9 @@
       <button class="delete" aria-label="delete"></button>
     {{/if}}
   </div>
+</template>
+
+<template name="bluzmaMessageBody">
+  {{content}}
+  {{> Template.contentBlock}}
 </template>
