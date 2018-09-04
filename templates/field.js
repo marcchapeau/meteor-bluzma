@@ -1,29 +1,38 @@
-// import { Template } from 'meteor/templating'
+import { Template } from 'meteor/templating'
+import Bluzma from 'meteor/chap:bluzma/bluzma'
 
-// import './field.html'
-// import { mapAttributsToClass, mapAttributsToOthers } from '../helpers'
+import './field.html'
 
-// Template.bluzmaField.helpers({
-//   class () { return mapAttributsToClass(Template.currentData()) },
-//   others () { return mapAttributsToOthers(Template.currentData()) }
-// })
+// https://bulma.io/documentation/form/general
 
-// Template.bluzmaFieldLabel.helpers({
-//   class () { return mapAttributsToClass(Template.currentData()) },
-//   others () { return mapAttributsToOthers(Template.currentData()) }
-// })
+const bluzmaField = new Bluzma('Field', ['addons', 'grouped', 'groupedMultiline', 'horizontal'])
 
-// Template.bluzmaFieldBody.helpers({
-//   class () { return mapAttributsToClass(Template.currentData()) },
-//   others () { return mapAttributsToOthers(Template.currentData()) }
-// })
+bluzmaField.helpers({
+  addons: () => {
+    const addons = Template.currentData().addons
+    return addons && `has-addons${addons === true ? '' : ` has-addons-${addons}`}`
+  },
+  grouped: () => {
+    const grouped = Template.currentData().grouped
+    return grouped && `is-grouped${grouped === true ? '' : ` is-grouped-${grouped}`}`
+  },
+  groupedMultiline: () => Template.currentData().groupedMultiline && `is-grouped-multiline`,
+  horizontal: () => Template.currentData().horizontal && `is-horizontal`
+})
 
-// Template.bluzmaFieldControl.helpers({
-//   class () { return mapAttributsToClass(Template.currentData()) },
-//   others () { return mapAttributsToOthers(Template.currentData()) }
-// })
+bluzmaField.register()
 
-// Template.bluzmaFieldLabel.helpers({
-//   class () { return mapAttributsToClass(Template.currentData()) },
-//   others () { return mapAttributsToOthers(Template.currentData()) }
-// })
+const bluzmaFieldLabel = new Bluzma('FieldLabel', ['content', 'size'])
+
+bluzmaFieldLabel.helpers({
+  size: () => {
+    const size = Template.currentData().size
+    return size && `is-${size}`
+  }
+})
+
+bluzmaFieldLabel.register()
+
+const bluzmaFieldBody = new Bluzma('FieldBody', ['content'])
+
+bluzmaFieldBody.register()

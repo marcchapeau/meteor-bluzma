@@ -1,36 +1,21 @@
 <template name="bluzmaField">
-  <div class="field {{class}}" {{others}}>
-    {{body}}
+  <div class="field {{addons}} {{grouped}} {{groupedMultiline}} {{horizontal}} {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </div>
 </template>
 
-<template name="bluzmaLabel">
-  <label class="label {{class}}" {{others}}>
-    {{label}}
-    {{> Template.contentBlock}}
-  </label>
-</template>
-
 <template name="bluzmaFieldLabel">
-  <div class="field-label {{class}}" {{others}}>
-    {{#if label}}
-      <label class="label">{{label}}</label>
+  <div class="field-label {{size}} {{class}}" {{others}}>
+    {{#if content}}
+      <label class="label">{{content}}</label>
     {{/if}}
-    {{body}}
     {{> Template.contentBlock}}
   </div>
 </template>
 
 <template name="bluzmaFieldBody">
   <div class="field-body {{class}}" {{others}}>
-    {{body}}
-    {{> Template.contentBlock}}
-  </div>
-</template>
-
-<template name="bluzmaFieldControl">
-  <div class="control {{class}}" {{others}}>
+    {{content}}
     {{> Template.contentBlock}}
   </div>
 </template>
