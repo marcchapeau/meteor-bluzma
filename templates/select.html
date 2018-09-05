@@ -1,6 +1,6 @@
 <template name="bluzmaSelect">
   <div class="select {{expanded}} {{multiple}} {{color}} {{rounded}} {{loading}} {{fullwidth}} {{iconsLeft}} {{size}} {{class}}" {{others}}>
-    <select name="{{name}}" class="{{focused}} {{hovered}}" multiple={{multiple}}>
+    <select name="{{name}}" class="{{focused}} {{hovered}}" multiple="{{multiple}}">
       {{#with defaultOption}}
         <option value="{{value}}">{{label}}</option>
       {{/with}}
@@ -13,7 +13,5 @@
 </template>
 
 <template name="bluzmaSelectOption">
-  <option class="{{class}}" value={{value}} {{others}}>
-    {{label}}
-  </option>
+  <option class="{{class}}" value="{{value}}" {{others}}>{{label}}</option>
 </template>
