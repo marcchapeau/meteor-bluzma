@@ -18,6 +18,7 @@ Package.onUse(function (api) {
     'templates/div.js',
     'templates/field.js',
     'templates/icon.js',
+    'templates/image.js',
     'templates/link.js',
     'templates/message.js',
     'templates/modal.js',
