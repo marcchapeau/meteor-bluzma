@@ -7,7 +7,7 @@ import './select.html'
 const bluzmaSelect = new Bluzma('Select', [
   'multiple', 'size', 'color', 'rounded',
   'loading', 'fullwidth', 'expanded', 'iconsLeft',
-  'focused', 'name', 'defaultOption'
+  'focused', 'name', 'defaultOption', 'options'
 ])
 
 bluzmaSelect.helpers({

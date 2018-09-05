@@ -1,20 +1,32 @@
-// import { Template } from 'meteor/templating'
+import { Template } from 'meteor/templating'
 
-// import { mapAttributsToClass, mapAttributsToOthers } from '../helpers'
+import Bluzma from 'meteor/chap:bluzma/bluzma'
 
-// const tabAttributs = [
-//   'href',
-//   'label'
-// ]
+const bluzmaTabs = new Bluzma('Tabs', [
+  'centered', 'right', 'size', 'fullwidth', 'toggle',
+  'boxed', 'toggleRounded'
+])
 
-// const tabsAttributs = []
+bluzmaTabs.helpers({
+  size: () => {
+    const size = Template.currentData().size
+    return size && `is-${size}`
+  },
+  centered: () => Template.currentData().centered && `is-centered`,
+  right: () => Template.currentData().centered && `is-right`,
+  fullwidth: () => Template.currentData().fullwidth && `is-fullwidth`,
+  toggle: () => Template.currentData().toggle && `is-toggle`,
+  boxed: () => Template.currentData().boxed && `is-boxed`,
+  toggleRounded: () => Template.currentData().toggleRounded && `is-toggle-rounded`
+})
 
-// Template.bluzmaTabs.helpers({
-//   class () { return mapAttributsToClass(Template.currentData()) },
-//   others () { return mapAttributsToOthers(Template.currentData(), tabsAttributs) }
-// })
+const bluzmaTab = new Bluzma('Tab', [
+  'active'
+])
 
-// Template.bluzmaTab.helpers({
-//   class () { return mapAttributsToClass(Template.currentData()) },
-//   others () { return mapAttributsToOthers(Template.currentData(), tabAttributs) }
-// })
+bluzmaTab.helpers({
+  active: () => Template.currentData().active && `is-active`
+})
+
+bluzmaTabs.register()
+bluzmaTab.register()

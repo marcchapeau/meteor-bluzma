@@ -2,7 +2,7 @@
   <div class="select {{expanded}} {{multiple}} {{color}} {{rounded}} {{loading}} {{fullwidth}} {{iconsLeft}} {{size}} {{class}}" {{others}}>
     <select name="{{name}}" class="{{focused}} {{hovered}}" multiple="{{multiple}}">
       {{#with defaultOption}}
-        <option value="{{value}}">{{label}}</option>
+        <option selected value="{{value}}" disabled="{{disabled}}">{{label}}</option>
       {{/with}}
       {{#each option in options}}
         {{> bluzmaSelectOption value=option.value label=option.label}}
