@@ -18,7 +18,7 @@ bluzmaImage.helpers({
 
 bluzmaImage.register()
 
-const bluzmaImg = new Bluzma('Img', ['rounded', 'src'])
+const bluzmaImg = new Bluzma('Img', ['rounded'])
 
 bluzmaImg.helpers({
   rounded () {
