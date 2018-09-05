@@ -55,7 +55,7 @@ const bluzmaColumn = new Bluzma('Column', () => {
 bluzmaColumn.helpers({
   narrow: () => {
     const device = Template.currentData().narrow
-    if (typeof device !== 'undefined') return `is-narrow${device !== true && `-${device}`}`
+    if (typeof device !== 'undefined') return `is-narrow${device === true ? '' : `-${device}`}`
   },
   offset: () => {
     const list = []
