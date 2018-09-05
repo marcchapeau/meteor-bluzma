@@ -1,5 +1,12 @@
 <template name="bluzmaImage">
   <figure class="image {{class}}" {{others}}>
-    <img class="{{rounded}}" src="{{src}}">
+    {{#if src}}
+      {{> bluzmaImg class="{{rounded}}" src="{{src}}"}}
+    {{/if}}
+    {{> Template.contentBlock}}
   </figure>
+</template>
+
+<template name="bluzmaImg">
+  <img class="{{rounded}}" src="{{src}}">
 </template>

@@ -17,3 +17,14 @@ bluzmaImage.helpers({
 })
 
 bluzmaImage.register()
+
+const bluzmaImg = new Bluzma('Img', ['rounded', 'src'])
+
+bluzmaImg.helpers({
+  rounded () {
+    const rounded = Template.currentData().rounded
+    return rounded && `is-rounded`
+  }
+})
+
+bluzmaImg.register()
