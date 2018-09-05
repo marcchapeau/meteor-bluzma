@@ -33,6 +33,28 @@ bluzmaFieldLabel.helpers({
 
 bluzmaFieldLabel.register()
 
+const bluzmaLabel = new Bluzma('Label', ['content', 'size'])
+
+bluzmaLabel.helpers({
+  size: () => {
+    const size = Template.currentData().size
+    return size && `is-${size}`
+  }
+})
+
+bluzmaLabel.register()
+
 const bluzmaFieldBody = new Bluzma('FieldBody', ['content'])
 
 bluzmaFieldBody.register()
+
+const bluzmaFieldControl = new Bluzma('FieldControl')
+
+bluzmaFieldControl.helpers({
+  addons: () => {
+    const addons = Template.currentData().addons
+    return addons && `has-addons`
+  }
+})
+
+bluzmaFieldControl.register()

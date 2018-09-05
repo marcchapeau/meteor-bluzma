@@ -4,6 +4,13 @@
   </div>
 </template>
 
+<template name="bluzmaLabel">
+  <label class="label {{class}}" {{others}}>
+    {{content}}
+    {{> Template.contentBlock}}
+  </label>
+</template>
+
 <template name="bluzmaFieldLabel">
   <div class="field-label {{size}} {{class}}" {{others}}>
     {{#if content}}
@@ -16,6 +23,12 @@
 <template name="bluzmaFieldBody">
   <div class="field-body {{class}}" {{others}}>
     {{content}}
+    {{> Template.contentBlock}}
+  </div>
+</template>
+
+<template name="bluzmaFieldControl">
+  <div class="control {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </div>
 </template>
