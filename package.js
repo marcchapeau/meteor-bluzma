@@ -1,6 +1,6 @@
 Package.describe({
   name: 'chap:bluzma',
-  version: '0.2.7',
+  version: '0.3.0',
   summary: 'A set of Blaze components for Bulma',
   git: 'https://github.com/marcchapeau/meteor-bluzma.git',
   documentation: 'README.md'
@@ -19,6 +19,7 @@ Package.onUse(function (api) {
     'templates/field.js',
     'templates/icon.js',
     'templates/image.js',
+    'templates/level.js',
     'templates/link.js',
     'templates/message.js',
     'templates/modal.js',
