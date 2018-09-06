@@ -119,7 +119,7 @@ class Bluzma {
     this._events = {
       'click' (tpl, evt) {
         const onClick = Template.currentData().onClick
-        if (onClick) onClick.call(this, tpl, evt)
+        if (onClick) onClick.call(instance, tpl, evt)
       }
     }
   }
