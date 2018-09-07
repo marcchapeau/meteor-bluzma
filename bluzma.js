@@ -46,13 +46,13 @@ const ALIGNMENTS = {
 
 const classes = {}
 // HELPERS
-  // Float
+// Float
 classes.clearfix = () => 'is-clearfix'
 classes.pulled = (side) => `is-pulled-${side}`
-  // Spacing
+// Spacing
 classes.marginless = () => 'is-marginless'
 classes.paddingless = () => 'is-paddingless'
-  // Other
+// Other
 classes.overlay = () => 'is-overlay'
 classes.clipped = () => 'is-clipped'
 classes.radiusless = () => 'is-radiusless'
@@ -61,33 +61,33 @@ classes.unselectable = () => 'is-unselectable'
 classes.invisible = () => 'is-invisible'
 classes.srOnly = () => 'is-sr-only'
 // RESPONSIVE HELPERS
-  // Show
+// Show
 for (let d in DISPLAYS) {
   classes[d] = (device) => `is-${device === true ? DISPLAYS[d] : `${DISPLAYS[d]}-${DEVICES[device]}`}`
 }
-  // Hidden
+// Hidden
 classes.hidden = (device) => `is-hidden${device === true ? '' : `-${DEVICES[device]}`}`
 // COLOR HELPERS
-  // Text
+// Text
 classes.textColor = (color) => `has-text-${COLORS[color]}`
-  // Background
+// Background
 classes.bgColor = (color) => `has-background-${COLORS[color]}`
 // TYPOGRAPHY HELPERS
-  // Size
+// Size
 for (let s in SIZES) {
   classes[`textSize${s}`] = (device) => `is-size-${device === true ? s : `${s}-${DEVICES[device]}`}`
 }
-  // Alignment
+// Alignment
 for (let a in ALIGNMENTS) {
   const name = `text${a.charAt(0).toUpperCase() + a.slice(1)}`
   classes[name] = (device) => `has-text-${device === true ? ALIGNMENTS[a] : `${ALIGNMENTS[a]}-${DEVICES[device]}`}`
 }
-  // Transformation
+// Transformation
 classes.capitalized = () => 'is-capitalized'
 classes.lowercase = () => 'is-lowercase'
 classes.uppercase = () => 'is-uppercase'
 classes.italic = () => 'is-italic'
-  // Weight
+// Weight
 classes.textWeight = (weight) => `has-text-weight-${weight}`
 
 class Bluzma {

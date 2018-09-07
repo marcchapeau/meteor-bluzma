@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating'
+import { ReactiveDict } from 'meteor/reactive-dict'
 import Bluzma from 'meteor/chap:bluzma/bluzma'
 
 import './button.html'
@@ -10,6 +11,17 @@ const bluzmaButton = new Bluzma('Button', [
   'loading', 'outlined', 'rounded', 'selected', 'size', 'static'
 ])
 
+bluzmaButton.hooks({
+  created () {
+    this.attributs = new ReactiveDict()
+    this.autorun(() => {
+      let loading = Template.currentData().loading
+      if (typeof loading === 'undefined') loading = false
+      this.attributs.set('loading', loading)
+    })
+  }
+})
+
 bluzmaButton.helpers({
   active: () => Template.currentData().active && 'is-active',
   color () {
@@ -20,7 +32,7 @@ bluzmaButton.helpers({
   fullwidth: () => Template.currentData().fullwidth && 'is-fullwidth',
   hovered: () => Template.currentData().hovered && 'is-hovered',
   inverted: () => Template.currentData().inverted && 'is-inverted',
-  loading: () => Template.currentData().loading && 'is-loading',
+  loading: () => Template.instance().attributs.get('loading') && 'is-loading',
   outlined: () => Template.currentData().outlined && 'is-outlined',
   rounded: () => Template.currentData().rounded && 'is-rounded',
   selected: () => Template.currentData().selected && 'is-selected',
