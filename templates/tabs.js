@@ -13,7 +13,7 @@ bluzmaTabs.helpers({
     return size && `is-${size}`
   },
   centered: () => Template.currentData().centered && `is-centered`,
-  right: () => Template.currentData().centered && `is-right`,
+  right: () => Template.currentData().right && `is-right`,
   fullwidth: () => Template.currentData().fullwidth && `is-fullwidth`,
   toggle: () => Template.currentData().toggle && `is-toggle`,
   boxed: () => Template.currentData().boxed && `is-boxed`,
