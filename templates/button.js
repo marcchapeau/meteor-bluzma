@@ -45,10 +45,13 @@ bluzmaButton.helpers({
 
 bluzmaButton.register()
 
-const bluzmaButtons = new Bluzma('Buttons', ['addons'])
+const bluzmaButtons = new Bluzma('Buttons', ['addons', 'centered', 'left', 'right'])
 
 bluzmaButtons.helpers({
-  addons: () => Template.currentData().addons && 'has-addons'
+  addons: () => Template.currentData().addons && 'has-addons',
+  centered: () => Template.currentData().centered && 'is-centered',
+  left: () => Template.currentData().left && 'is-left',
+  right: () => Template.currentData().right && 'is-right'
 })
 
 bluzmaButtons.register()
