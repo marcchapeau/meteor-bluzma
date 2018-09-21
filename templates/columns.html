@@ -1,3 +1,15 @@
+<template name="columns">
+  <div class="columns {{centered}} {{desktop}} {{gap}} {{gapless}} {{mobile}} {{multiline}} {{vCentered}} {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </div>
+</template>
+
+<template name="column">
+  <div class="column {{narrow}} {{offset}} {{size}} {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </div>
+</template>
+
 <template name="bluzmaColumns">
   <div class="columns {{centered}} {{desktop}} {{gap}} {{gapless}} {{mobile}} {{multiline}} {{vCentered}} {{class}}" {{others}}>
     {{> Template.contentBlock}}

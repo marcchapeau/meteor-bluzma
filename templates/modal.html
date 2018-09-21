@@ -1,4 +1,4 @@
-<template name="bluzmaModal">
+<template name="modal">
   <div class="modal {{class}}" {{others}}>
     {{#if background}}
       <div class="modal-background"></div>
@@ -7,13 +7,13 @@
   </div>
 </template>
 
-<template name="bluzmaModalCard">
+<template name="modalCard">
   <div class="modal-card {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </div>
 </template>
 
-<template name="bluzmaModalCardHead">
+<template name="modalCardHead">
   <header class="modal-card-head {{class}}" {{others}}>
     {{#if content}}
       <p class="modal-card-title">{{content}}</p>
@@ -25,13 +25,13 @@
   </header>
 </template>
 
-<template name="bluzmaModalCardBody">
+<template name="modalCardBody">
   <section class="modal-card-body {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </section>
 </template>
 
-<template name="bluzmaModalCardFoot">
+<template name="modalCardFoot">
   <footer class="modal-card-foot {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </footer>

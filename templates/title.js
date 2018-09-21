@@ -1,5 +1,4 @@
-import { Template } from 'meteor/templating'
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
 
 import './title.html'
 
@@ -7,28 +6,24 @@ import './title.html'
 
 // Title
 
-const bluzmaTitle = new Bluzma('Title', ['content', 'size', 'spaced'])
-
-bluzmaTitle.helpers({
-  size () {
-    const size = Template.currentData().size
-    return size && `is-${size}`
-  },
-  spaced: () => Template.currentData().spaced && 'is-spaced'
+BluzmaComponent.register('title', ['content', 'size', 'spaced'], {
+  helpers: {
+    size () {
+      const size = this.data().size
+      return size && `is-${size}`
+    },
+    spaced () { return this.data().spaced && 'is-spaced' }
+  }
 })
-
-bluzmaTitle.register()
 
 // Subtitle
 
-const bluzmaSubtitle = new Bluzma('Subtitle', ['content', 'size', 'spaced'])
-
-bluzmaSubtitle.helpers({
-  size () {
-    const size = Template.currentData().size
-    return size && `is-${size}`
-  },
-  spaced: () => Template.currentData().spaced && 'is-spaced'
+BluzmaComponent.register('subtitle', ['content', 'size', 'spaced'], {
+  helpers: {
+    size () {
+      const size = this.data().size
+      return size && `is-${size}`
+    },
+    spaced () { return this.data().spaced && 'is-spaced' }
+  }
 })
-
-bluzmaSubtitle.register()

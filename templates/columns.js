@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating'
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import Bluzma, { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
 
 import './columns.html'
 
@@ -82,3 +82,62 @@ bluzmaColumn.helpers({
 })
 
 bluzmaColumn.register()
+
+// ========================================================================== //
+
+// Columns
+
+BluzmaComponent.register('columns', [
+  'centered', 'desktop', 'gapless', 'mobile', 'multiline', 'variable',
+  'vCentered'
+], {
+  helpers: {
+    centered () { return this.data().centered && 'is-centered' },
+    desktop () { return this.data().desktop && 'is-desktop' },
+    gap () {
+      const size = this.data().gap
+      if (typeof size !== 'undefined') return `is-variable is-${size}`
+    },
+    gapless () { return this.data().gapless && 'is-gapless' },
+    mobile () { return this.data().mobile && 'is-mobile' },
+    multiline () { return this.data().multiline && 'is-multiline' },
+    vCentered () { return this.data().vCentered && 'is-vCentered' }
+  }
+})
+
+// Column
+
+BluzmaComponent.register('column', ['narrow', 'offset', 'size'], {
+  helpers: {
+    narrow () {
+      const device = this.data().narrow
+      if (typeof device !== 'undefined') {
+        return `is-narrow${device === true ? '' : `-${device}`}`
+      }
+    },
+    offset () {
+      const data = this.data()
+      const list = []
+      const offset = data.offset
+      if (typeof offset !== 'undefined') list.push(`is-offset-${SIZES[offset]}`)
+      DEVICES.forEach(d => {
+        const offset = data[`${d}Offset`]
+        if (typeof offset !== 'undefined') {
+          list.push(`is-offset-${SIZES[offset]}-${d}`)
+        }
+      })
+      return list.join(' ')
+    },
+    size () {
+      const data = this.data()
+      const list = []
+      const size = data.size
+      if (typeof size !== 'undefined') list.push(`is-${SIZES[size]}`)
+      DEVICES.forEach(d => {
+        const size = data[`${d}Size`]
+        if (typeof size !== 'undefined') list.push(`is-${SIZES[size]}-${d}`)
+      })
+      return list.join(' ')
+    }
+  }
+})

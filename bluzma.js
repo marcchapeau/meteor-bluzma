@@ -1,3 +1,6 @@
+import { EJSON } from 'meteor/ejson'
+import { ReactiveDict } from 'meteor/reactive-dict'
+import { ReactiveVar } from 'meteor/reactive-var'
 import { Template } from 'meteor/templating'
 
 const DISPLAYS = {
@@ -44,51 +47,51 @@ const ALIGNMENTS = {
   centered: 'centered', justified: 'justified', left: 'left', right: 'right'
 }
 
-const classes = {}
+const CLASS = {}
 // HELPERS
 // Float
-classes.clearfix = () => 'is-clearfix'
-classes.pulled = (side) => `is-pulled-${side}`
+CLASS.clearfix = () => 'is-clearfix'
+CLASS.pulled = (side) => `is-pulled-${side}`
 // Spacing
-classes.marginless = () => 'is-marginless'
-classes.paddingless = () => 'is-paddingless'
+CLASS.marginless = () => 'is-marginless'
+CLASS.paddingless = () => 'is-paddingless'
 // Other
-classes.overlay = () => 'is-overlay'
-classes.clipped = () => 'is-clipped'
-classes.radiusless = () => 'is-radiusless'
-classes.shadowless = () => 'is-shadowless'
-classes.unselectable = () => 'is-unselectable'
-classes.invisible = () => 'is-invisible'
-classes.srOnly = () => 'is-sr-only'
+CLASS.overlay = () => 'is-overlay'
+CLASS.clipped = () => 'is-clipped'
+CLASS.radiusless = () => 'is-radiusless'
+CLASS.shadowless = () => 'is-shadowless'
+CLASS.unselectable = () => 'is-unselectable'
+CLASS.invisible = () => 'is-invisible'
+CLASS.srOnly = () => 'is-sr-only'
 // RESPONSIVE HELPERS
 // Show
 for (let d in DISPLAYS) {
-  classes[d] = (device) => `is-${device === true ? DISPLAYS[d] : `${DISPLAYS[d]}-${DEVICES[device]}`}`
+  CLASS[d] = (device) => `is-${device === true ? DISPLAYS[d] : `${DISPLAYS[d]}-${DEVICES[device]}`}`
 }
 // Hidden
-classes.hidden = (device) => `is-hidden${device === true ? '' : `-${DEVICES[device]}`}`
+CLASS.hidden = (device) => `is-hidden${device === true ? '' : `-${DEVICES[device]}`}`
 // COLOR HELPERS
 // Text
-classes.textColor = (color) => `has-text-${COLORS[color]}`
+CLASS.textColor = (color) => `has-text-${COLORS[color]}`
 // Background
-classes.bgColor = (color) => `has-background-${COLORS[color]}`
+CLASS.bgColor = (color) => `has-background-${COLORS[color]}`
 // TYPOGRAPHY HELPERS
 // Size
 for (let s in SIZES) {
-  classes[`textSize${s}`] = (device) => `is-size-${device === true ? s : `${s}-${DEVICES[device]}`}`
+  CLASS[`textSize${s}`] = (device) => `is-size-${device === true ? s : `${s}-${DEVICES[device]}`}`
 }
 // Alignment
 for (let a in ALIGNMENTS) {
   const name = `text${a.charAt(0).toUpperCase() + a.slice(1)}`
-  classes[name] = (device) => `has-text-${device === true ? ALIGNMENTS[a] : `${ALIGNMENTS[a]}-${DEVICES[device]}`}`
+  CLASS[name] = (device) => `has-text-${device === true ? ALIGNMENTS[a] : `${ALIGNMENTS[a]}-${DEVICES[device]}`}`
 }
 // Transformation
-classes.capitalized = () => 'is-capitalized'
-classes.lowercase = () => 'is-lowercase'
-classes.uppercase = () => 'is-uppercase'
-classes.italic = () => 'is-italic'
+CLASS.capitalized = () => 'is-capitalized'
+CLASS.lowercase = () => 'is-lowercase'
+CLASS.uppercase = () => 'is-uppercase'
+CLASS.italic = () => 'is-italic'
 // Weight
-classes.textWeight = (weight) => `has-text-weight-${weight}`
+CLASS.textWeight = (weight) => `has-text-weight-${weight}`
 
 class Bluzma {
   constructor (name, attributs = []) {
@@ -100,15 +103,15 @@ class Bluzma {
     this._helpers = {
       class: function () {
         const data = Template.currentData()
-        const res = `${Object.keys(data).filter(key => classes[key])
-          .map(key => classes[key](data[key])).join(' ')}${data.class ? ` ${data.class}` : ''}`
+        const res = `${Object.keys(data).filter(key => CLASS[key])
+          .map(key => CLASS[key](data[key])).join(' ')}${data.class ? ` ${data.class}` : ''}`
         return res
       },
       others: function () {
         const attributs = instance.attributs
         const data = Template.currentData()
         const res = Object.keys(data).filter(key => {
-          return !classes[key] && !attributs.includes(key) && key !== 'class'
+          return !CLASS[key] && !attributs.includes(key) && key !== 'class'
         }).reduce((others, key) => {
           others[key] = data[key]
           return others
@@ -144,3 +147,85 @@ class Bluzma {
 }
 
 export default Bluzma
+
+export class BluzmaComponent {
+  constructor (name, attributs) {
+    this.attributs = ['onClick', ...attributs]
+    this.dataContext = new ReactiveVar(undefined, (a, b) => {
+      return EJSON.equals(a, b)
+    })
+    this.name = name
+    this.state = new ReactiveDict()
+  }
+  class () {
+    const data = this.data()
+    const globals = Object.keys(data).filter(key => !!CLASS[key]).map(key => {
+      return CLASS[key](data[key])
+    }).join(' ')
+    return `${globals}${globals && data.class ? ' ' : ''}${data.class || ''}`
+  }
+  currentData () { return Template.currentData() }
+  data () { return this.dataContext.get() }
+  autorun (func) { this.template.autorun(func) }
+  getState (key) { return this.state.get(key) }
+  others () {
+    const data = this.data()
+    return Object.keys(data).filter(key => {
+      return !CLASS[key] && !this.attributs.includes(key) && key !== 'class'
+    }).reduce((others, key) => {
+      others[key] = data[key]
+      return others
+    }, {})
+  }
+  setState (key, value) { this.state.set(key, value) }
+  static register (name, attributs = [], options = {}) {
+    const Component = this
+    Template[name].onCreated(function () {
+      this.component = new Component(name, attributs)
+      this.component.template = this
+      this.component.autorun(() => {
+        this.component.dataContext.set(Template.currentData())
+      })
+    })
+    Template[name].onRendered(function () {
+      if (options.hooks && options.hooks.rendered) {
+        options.hooks.rendered.call(this.component)
+      }
+    })
+    Template[name].onDestroyed(function () {
+      if (options.hooks && options.hooks.destroyed) {
+        options.hooks.destroyed.call(this.component)
+      }
+    })
+    options.helpers = {
+      ...options.helpers,
+      class () { return this.class() },
+      component () { return this },
+      currentData () { return this.currentData() },
+      data () { return this.data() },
+      others () { return this.others() },
+      state (key) { return this.getState(key) }
+    }
+    const helpers = {}
+    for (let key in options.helpers) {
+      helpers[key] = function (...args) {
+        return options.helpers[key].call(Template.instance().component, ...args)
+      }
+    }
+    Template[name].helpers(helpers)
+    options.events = {
+      ...options.events,
+      'click' (evt, tpl) {
+        const onClick = this.data().onClick
+        if (onClick) onClick.call(this, evt)
+      }
+    }
+    const events = {}
+    for (let key in options.events) {
+      events[key] = function (event, instance) {
+        options.events[key].call(instance.component, event)
+      }
+    }
+    Template[name].events(events)
+  }
+}
