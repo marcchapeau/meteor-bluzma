@@ -1,39 +1,34 @@
-import { Template } from 'meteor/templating'
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
 
 import './tag.html'
 
 // https://bulma.io/documentation/elements/button
 
-const bluzmaTags = new Bluzma('Tags', ['addons'])
-
-bluzmaTags.helpers({
-  addons: () => Template.currentData().addons && 'has-addons'
-})
-
-bluzmaTags.register()
-
-const bluzmaTag = new Bluzma('Tag', ['content', 'delete'])
-
-bluzmaTag.helpers({
-  color () {
-    const color = Template.currentData().color
-    return color && `is-${color}`
-  },
-  delete: () => Template.currentData().delete && 'is-delete',
-  deleteSize () {
-    const size = Template.currentData().size
-    if (!size || size === 'medium') return 'is-small'
-  },
-  isA () {
-    const data = Template.currentData()
-    return data.href || data.onClick
-  },
-  onDelete: () => !!Template.currentData().onDelete,
-  size () {
-    const size = Template.currentData().size
-    return size && `is-${size}`
+BluzmaComponent.register('tags', ['addons'], {
+  helpers: {
+    addons () { return this.data().addons && 'has-addons' }
   }
 })
 
-bluzmaTag.register()
+BluzmaComponent.register('tag', ['content', 'delete'], {
+  helpers: {
+    color () {
+      const color = this.data().color
+      return color && `is-${color}`
+    },
+    delete () { return this.data().delete && 'is-delete' },
+    deleteSize () {
+      const size = this.data().size
+      if (!size || size === 'medium') return 'is-small'
+    },
+    isA () {
+      const data = this.data()
+      return data.href || data.onClick
+    },
+    onDelete () { return !!this.data().onDelete },
+    size () {
+      const size = this.data().size
+      return size && `is-${size}`
+    }
+  }
+})

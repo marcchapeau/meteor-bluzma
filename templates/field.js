@@ -1,60 +1,55 @@
-import { Template } from 'meteor/templating'
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
 
 import './field.html'
 
 // https://bulma.io/documentation/form/general
 
-const bluzmaField = new Bluzma('Field', ['addons', 'grouped', 'groupedMultiline', 'horizontal'])
-
-bluzmaField.helpers({
-  addons: () => {
-    const addons = Template.currentData().addons
-    return addons && `has-addons${addons === true ? '' : ` has-addons-${addons}`}`
-  },
-  grouped: () => {
-    const grouped = Template.currentData().grouped
-    return grouped && `is-grouped${grouped === true ? '' : ` is-grouped-${grouped}`}`
-  },
-  groupedMultiline: () => Template.currentData().groupedMultiline && `is-grouped-multiline`,
-  horizontal: () => Template.currentData().horizontal && `is-horizontal`
-})
-
-bluzmaField.register()
-
-const bluzmaFieldLabel = new Bluzma('FieldLabel', ['content', 'size'])
-
-bluzmaFieldLabel.helpers({
-  size: () => {
-    const size = Template.currentData().size
-    return size && `is-${size}`
+BluzmaComponent.register('field', [
+  'addons', 'grouped', 'groupedMultiline', 'horizontal'
+], {
+  helpers: {
+    addons () {
+      const addons = this.data().addons
+      return addons && `has-addons${addons === true ? '' : ` has-addons-${addons}`}`
+    },
+    grouped () {
+      const grouped = this.data().grouped
+      return grouped && `is-grouped${grouped === true ? '' : ` is-grouped-${grouped}`}`
+    },
+    groupedMultiline () {
+      return this.data().groupedMultiline && `is-grouped-multiline`
+    },
+    horizontal () {
+      return this.data().horizontal && `is-horizontal`
+    }
   }
 })
 
-bluzmaFieldLabel.register()
-
-const bluzmaLabel = new Bluzma('Label', ['content', 'size'])
-
-bluzmaLabel.helpers({
-  size: () => {
-    const size = Template.currentData().size
-    return size && `is-${size}`
+BluzmaComponent.register('fieldLabel', ['content', 'size'], {
+  helpers: {
+    size () {
+      const size = this.data().size
+      return size && `is-${size}`
+    }
   }
 })
 
-bluzmaLabel.register()
-
-const bluzmaFieldBody = new Bluzma('FieldBody', ['content'])
-
-bluzmaFieldBody.register()
-
-const bluzmaFieldControl = new Bluzma('FieldControl')
-
-bluzmaFieldControl.helpers({
-  addons: () => {
-    const addons = Template.currentData().addons
-    return addons && `has-addons`
+BluzmaComponent.register('label', ['content', 'size'], {
+  helpers: {
+    size () {
+      const size = this.data().size
+      return size && `is-${size}`
+    }
   }
 })
 
-bluzmaFieldControl.register()
+BluzmaComponent.register('fieldBody', ['content'])
+
+BluzmaComponent.register('fieldControl', ['addons'], {
+  helpers: {
+    addons () {
+      const addons = this.data().addons
+      return addons && `has-addons`
+    }
+  }
+})

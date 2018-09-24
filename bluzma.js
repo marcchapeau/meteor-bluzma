@@ -155,6 +155,7 @@ export class BluzmaComponent {
       return EJSON.equals(a, b)
     })
     this.name = name
+    this.props = new ReactiveDict()
     this.state = new ReactiveDict()
   }
   class () {
@@ -167,6 +168,7 @@ export class BluzmaComponent {
   currentData () { return Template.currentData() }
   data () { return this.dataContext.get() }
   autorun (func) { this.template.autorun(func) }
+  getProps (key) { return this.props.get(key) }
   getState (key) { return this.state.get(key) }
   others () {
     const data = this.data()
@@ -184,8 +186,13 @@ export class BluzmaComponent {
       this.component = new Component(name, attributs)
       this.component.template = this
       this.component.autorun(() => {
-        this.component.dataContext.set(Template.currentData())
+        const data = Template.currentData()
+        this.component.dataContext.set(data)
+        for (let key in data) this.component.props.set(key, data[key])
       })
+      if (options.hooks && options.hooks.created) {
+        options.hooks.created.call(this.component)
+      }
     })
     Template[name].onRendered(function () {
       if (options.hooks && options.hooks.rendered) {

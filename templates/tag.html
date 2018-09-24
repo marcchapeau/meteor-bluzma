@@ -1,4 +1,10 @@
-<template name="bluzmaTag">
+<template name="tags">
+  <div class="tags {{addons}} {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </div>
+</template>
+
+<template name="tag">
   {{#if isA}}
     <a class="tag {{color}} {{delete}} {{size}} {{class}}" {{others}}>
       {{content}}
@@ -16,10 +22,4 @@
       {{/if}}
     </span>
   {{/if}}
-</template>
-
-<template name="bluzmaTags">
-  <div class="tags {{addons}} {{class}}" {{others}}>
-    {{> Template.contentBlock}}
-  </div>
 </template>

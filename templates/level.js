@@ -1,5 +1,4 @@
-import { Template } from 'meteor/templating'
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
 
 import './level.html'
 
@@ -7,28 +6,20 @@ import './level.html'
 
 // Level
 
-const bluzmaLevel = new Bluzma('Level', ['mobile'])
-
-bluzmaLevel.helpers({
-  mobile: () => Template.currentData().mobile && 'is-mobile'
+BluzmaComponent.register('lvl', ['mobile'], {
+  helpers: {
+    mobile () { return this.data().mobile && 'is-mobile' }
+  }
 })
-
-bluzmaLevel.register()
 
 // Level left
 
-const bluzmaLevelLeft = new Bluzma('LevelLeft')
-
-bluzmaLevelLeft.register()
+BluzmaComponent.register('lvlL')
 
 // Level right
 
-const bluzmaLevelRight = new Bluzma('LevelRight')
-
-bluzmaLevelRight.register()
+BluzmaComponent.register('lvlR')
 
 // Level item
 
-const bluzmaLevelItem = new Bluzma('LevelItem')
-
-bluzmaLevelItem.register()
+BluzmaComponent.register('lvlI')
