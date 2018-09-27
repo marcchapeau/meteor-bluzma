@@ -1,36 +1,29 @@
-import { Template } from 'meteor/templating'
-
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './select.html'
 
-const bluzmaSelect = new Bluzma('Select', [
-  'multiple', 'size', 'color', 'rounded',
-  'loading', 'fullwidth', 'expanded', 'iconsLeft',
-  'focused', 'name', 'defaultOption', 'options'
-])
-
-bluzmaSelect.helpers({
-  rounded: () => Template.currentData().rounded && `is-rounded`,
-  iconsLeft: () => Template.currentData().iconLeft && 'has-icons-left',
-  multiple: () => Template.currentData().multiple && 'is-multiple',
-  loading: () => Template.currentData().loading && `is-loading`,
-  fullwidth: () => Template.currentData().fullwidth && `is-fullwidth`,
-  focused: () => Template.currentData().focused && `is-focused`,
-  hovered: () => Template.currentData().hovered && `is-hovered`,
-  color: () => {
-    const color = Template.currentData().color
-    return color && `is-${color}`
-  },
-  size: () => {
-    const size = Template.currentData().size
-    return size && `is-${size}`
-  },
-  expanded: () => Template.currentData().expanded && `is-expanded`
+Bluzma.register('select', [
+  'color', 'defaultOption', 'expanded', 'focused', 'fullwidth', 'hovered',
+  'iconsLeft', 'loading', 'multiple', 'name', 'options', 'rounded', 'size'
+], {
+  helpers: {
+    color () {
+      const color = this.data().color
+      return color && `is-${color}`
+    },
+    expanded () { return this.data().expanded && `is-expanded` },
+    focused () { return this.data().focused && `is-focused` },
+    fullwidth () { return this.data().fullwidth && `is-fullwidth` },
+    hovered () { return this.data().hovered && `is-hovered` },
+    iconsLeft () { return this.data().iconLeft && 'has-icons-left' },
+    loading () { return this.data().loading && `is-loading` },
+    multiple () { return this.data().multiple && 'is-multiple' },
+    rounded () { return this.data().rounded && `is-rounded` },
+    size () {
+      const size = this.data().size
+      return size && `is-${size}`
+    }
+  }
 })
 
-bluzmaSelect.register()
-
-const bluzmaSelectOption = new Bluzma('SelectOption', [])
-
-bluzmaSelectOption.register()
+Bluzma.register('selectOption')

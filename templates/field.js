@@ -1,10 +1,10 @@
-import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './field.html'
 
 // https://bulma.io/documentation/form/general
 
-BluzmaComponent.register('field', [
+Bluzma.register('field', [
   'addons', 'grouped', 'groupedMultiline', 'horizontal'
 ], {
   helpers: {
@@ -25,7 +25,7 @@ BluzmaComponent.register('field', [
   }
 })
 
-BluzmaComponent.register('fieldLabel', ['content', 'size'], {
+Bluzma.register('fieldLabel', ['content', 'size'], {
   helpers: {
     size () {
       const size = this.data().size
@@ -34,7 +34,7 @@ BluzmaComponent.register('fieldLabel', ['content', 'size'], {
   }
 })
 
-BluzmaComponent.register('label', ['content', 'size'], {
+Bluzma.register('label', ['content', 'size'], {
   helpers: {
     size () {
       const size = this.data().size
@@ -43,9 +43,9 @@ BluzmaComponent.register('label', ['content', 'size'], {
   }
 })
 
-BluzmaComponent.register('fieldBody', ['content'])
+Bluzma.register('fieldBody', ['content'])
 
-BluzmaComponent.register('fieldControl', ['addons'], {
+Bluzma.register('fieldControl', ['addons'], {
   helpers: {
     addons () {
       const addons = this.data().addons

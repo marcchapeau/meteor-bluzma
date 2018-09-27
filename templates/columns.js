@@ -1,5 +1,4 @@
-import { Template } from 'meteor/templating'
-import Bluzma, { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './columns.html'
 
@@ -22,72 +21,7 @@ for (let n = 0; n <= 12; n++) SIZES[n] = `${n}`
 
 // Columns
 
-const bluzmaColumns = new Bluzma('Columns', [
-  'centered', 'desktop', 'gapless', 'mobile', 'multiline', 'variable', 'vCentered'
-])
-
-bluzmaColumns.helpers({
-  centered: () => Template.currentData().centered && 'is-centered',
-  desktop: () => Template.currentData().desktop && 'is-desktop',
-  gap: () => {
-    const size = Template.currentData().gap
-    if (typeof size !== 'undefined') return `is-variable is-${size}`
-  },
-  gapless: () => Template.currentData().gapless && 'is-gapless',
-  mobile: () => Template.currentData().mobile && 'is-mobile',
-  multiline: () => Template.currentData().multiline && 'is-multiline',
-  vCentered: () => Template.currentData().vCentered && 'is-vCentered'
-})
-
-bluzmaColumns.register()
-
-// Column
-
-const bluzmaColumn = new Bluzma('Column', () => {
-  const attributs = ['narrow', 'size']
-  DEVICES.forEach(d => {
-    attributs.push(`${d}Size`)
-    attributs.push(`${d}Offset`)
-  })
-  return attributs
-})
-
-bluzmaColumn.helpers({
-  narrow: () => {
-    const device = Template.currentData().narrow
-    if (typeof device !== 'undefined') return `is-narrow${device === true ? '' : `-${device}`}`
-  },
-  offset: () => {
-    const list = []
-    const offset = Template.currentData().offset
-    if (typeof offset !== 'undefined') list.push(`is-offset-${SIZES[offset]}`)
-    DEVICES.forEach(d => {
-      const name = `${d}Offset`
-      const offset = Template.currentData()[name]
-      if (typeof offset !== 'undefined') list.push(`is-offset-${SIZES[offset]}-${d}`)
-    })
-    return list.join(' ')
-  },
-  size: () => {
-    const list = []
-    const size = Template.currentData().size
-    if (typeof size !== 'undefined') list.push(`is-${SIZES[size]}`)
-    DEVICES.forEach(d => {
-      const name = `${d}Size`
-      const size = Template.currentData()[name]
-      if (typeof size !== 'undefined') list.push(`is-${SIZES[size]}-${d}`)
-    })
-    return list.join(' ')
-  }
-})
-
-bluzmaColumn.register()
-
-// ========================================================================== //
-
-// Columns
-
-BluzmaComponent.register('columns', [
+Bluzma.register('columns', [
   'centered', 'desktop', 'gapless', 'mobile', 'multiline', 'variable',
   'vCentered'
 ], {
@@ -107,7 +41,7 @@ BluzmaComponent.register('columns', [
 
 // Column
 
-BluzmaComponent.register('column', ['narrow', 'offset', 'size'], {
+Bluzma.register('column', ['narrow', 'offset', 'size'], {
   helpers: {
     narrow () {
       const device = this.data().narrow
@@ -117,8 +51,8 @@ BluzmaComponent.register('column', ['narrow', 'offset', 'size'], {
     },
     offset () {
       const data = this.data()
-      const list = []
       const offset = data.offset
+      const list = []
       if (typeof offset !== 'undefined') list.push(`is-offset-${SIZES[offset]}`)
       DEVICES.forEach(d => {
         const offset = data[`${d}Offset`]
@@ -130,8 +64,8 @@ BluzmaComponent.register('column', ['narrow', 'offset', 'size'], {
     },
     size () {
       const data = this.data()
-      const list = []
       const size = data.size
+      const list = []
       if (typeof size !== 'undefined') list.push(`is-${SIZES[size]}`)
       DEVICES.forEach(d => {
         const size = data[`${d}Size`]

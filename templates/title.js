@@ -1,4 +1,4 @@
-import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './title.html'
 
@@ -6,7 +6,7 @@ import './title.html'
 
 // Title
 
-BluzmaComponent.register('title', ['content', 'size', 'spaced'], {
+Bluzma.register('title', ['content', 'size', 'spaced'], {
   helpers: {
     size () {
       const size = this.data().size
@@ -18,7 +18,7 @@ BluzmaComponent.register('title', ['content', 'size', 'spaced'], {
 
 // Subtitle
 
-BluzmaComponent.register('subtitle', ['content', 'size', 'spaced'], {
+Bluzma.register('subtitle', ['content', 'size', 'spaced'], {
   helpers: {
     size () {
       const size = this.data().size

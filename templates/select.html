@@ -1,17 +1,17 @@
-<template name="bluzmaSelect">
-  <div class="select {{expanded}} {{multiple}} {{color}} {{rounded}} {{loading}} {{fullwidth}} {{iconsLeft}} {{size}} {{class}}" {{others}}>
+<template name="select">
+  <div class="select {{color}} {{expanded}} {{fullwidth}} {{iconsLeft}} {{loading}} {{multiple}} {{rounded}} {{size}} {{class}}" {{others}}>
     <select name="{{name}}" class="{{focused}} {{hovered}}" multiple="{{multiple}}">
       {{#with defaultOption}}
         <option selected value="{{value}}" disabled="{{disabled}}">{{label}}</option>
       {{/with}}
       {{#each option in options}}
-        {{> bluzmaSelectOption value=option.value label=option.label}}
+        {{> selectOption value=option.value label=option.label}}
       {{/each}}
       {{> Template.contentBlock}}
     </select>
   </div>
 </template>
 
-<template name="bluzmaSelectOption">
+<template name="selectOption">
   <option class="{{class}}" value="{{value}}" {{others}}>{{label}}</option>
 </template>

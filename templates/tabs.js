@@ -1,32 +1,32 @@
-import { Template } from 'meteor/templating'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import './tabs.html'
 
-const bluzmaTabs = new Bluzma('Tabs', [
-  'centered', 'right', 'size', 'fullwidth', 'toggle',
-  'boxed', 'toggleRounded'
-])
+// https://bulma.io/documentation/components/tabs
 
-bluzmaTabs.helpers({
-  size: () => {
-    const size = Template.currentData().size
-    return size && `is-${size}`
-  },
-  centered: () => Template.currentData().centered && `is-centered`,
-  right: () => Template.currentData().right && `is-right`,
-  fullwidth: () => Template.currentData().fullwidth && `is-fullwidth`,
-  toggle: () => Template.currentData().toggle && `is-toggle`,
-  boxed: () => Template.currentData().boxed && `is-boxed`,
-  toggleRounded: () => Template.currentData().toggleRounded && `is-toggle-rounded`
+// Tabs
+
+Bluzma.register('tabs', [
+  'boxed', 'centered', 'right', 'size', 'fullwidth', 'toggle', 'toggleRounded'
+], {
+  helpers: {
+    boxed () { return this.data().boxed && `is-boxed` },
+    centered () { return this.data().centered && `is-centered` },
+    fullwidth () { return this.data().fullwidth && `is-fullwidth` },
+    right () { return this.data().right && `is-right` },
+    size () {
+      const size = this.data().size
+      return size && `is-${size}`
+    },
+    toggle () { return this.data().toggle && `is-toggle` },
+    toggleRounded () { return this.data().toggleRounded && `is-toggle-rounded` }
+  }
 })
 
-const bluzmaTab = new Bluzma('Tab', [
-  'active'
-])
+// Tab
 
-bluzmaTab.helpers({
-  active: () => Template.currentData().active && `is-active`
+Bluzma.register('tab', ['active'], {
+  helpers: {
+    active () { return this.data().active && `is-active` }
+  }
 })
-
-bluzmaTabs.register()
-bluzmaTab.register()

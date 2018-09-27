@@ -1,8 +1,8 @@
-import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './image.html'
 
-BluzmaComponent.register('image', ['rounded', 'size', 'src'], {
+Bluzma.register('image', ['rounded', 'size', 'src'], {
   helpers: {
     rounded () { return this.data().rounded && `is-rounded` },
     size () {
@@ -12,7 +12,7 @@ BluzmaComponent.register('image', ['rounded', 'size', 'src'], {
   }
 })
 
-BluzmaComponent.register('img', ['rounded'], {
+Bluzma.register('img', ['rounded'], {
   helpers: {
     rounded () { return this.data().rounded && `is-rounded` }
   }

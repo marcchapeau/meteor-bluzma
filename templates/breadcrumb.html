@@ -1,4 +1,4 @@
-<template name="bluzmaBreadcrumb">
+<template name="breadcrumb">
   <nav class="breadcrumb {{class}}" {{others}}>
     <ul>
       {{> Template.contentBlock}}
@@ -6,7 +6,7 @@
   </nav>
 </template>
 
-<template name="bluzmaBreadcrumbItem">
+<template name="breadcrumbItem">
   <li class="{{active}} {{class}}" {{others}}>
     {{#if content}}
       <a href="{{href}}">{{content}}</a>

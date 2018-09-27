@@ -1,16 +1,12 @@
-import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './tag.html'
 
-// https://bulma.io/documentation/elements/button
+// https://bulma.io/documentation/elements/tag
 
-BluzmaComponent.register('tags', ['addons'], {
-  helpers: {
-    addons () { return this.data().addons && 'has-addons' }
-  }
-})
+// Tag
 
-BluzmaComponent.register('tag', ['content', 'delete'], {
+Bluzma.register('tag', ['content', 'delete'], {
   helpers: {
     color () {
       const color = this.data().color
@@ -30,5 +26,13 @@ BluzmaComponent.register('tag', ['content', 'delete'], {
       const size = this.data().size
       return size && `is-${size}`
     }
+  }
+})
+
+// Tags
+
+Bluzma.register('tags', ['addons'], {
+  helpers: {
+    addons () { return this.data().addons && 'has-addons' }
   }
 })

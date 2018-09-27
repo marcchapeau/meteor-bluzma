@@ -1,4 +1,4 @@
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './card.html'
 
@@ -6,48 +6,39 @@ import './card.html'
 
 //  Card
 
-const bluzmaCard = new Bluzma('Card')
-
-bluzmaCard.register()
+Bluzma.register('card')
 
 // Card image
 
-const bluzmaCardImage = new Bluzma('CardImage')
-
-bluzmaCardImage.register()
+Bluzma.register('cardImage')
 
 // Card header
 
-const bluzmaCardHeader = new Bluzma('CardHeader')
-
-bluzmaCardHeader.register()
+Bluzma.register('cardHeader')
 
 // Card header title
 
-const bluzmaCardHeaderTitle = new Bluzma('CardHeaderTitle', ['content'])
-
-bluzmaCardHeaderTitle.register()
+Bluzma.register('cardHeaderTitle', ['content'])
 
 // Card header icon
 
-const bluzmaCardHeaderIcon = new Bluzma('CardHeaderIcon', ['icon'])
-
-bluzmaCardHeaderIcon.register()
+Bluzma.register('cardHeaderIcon', ['icon'])
 
 // Card content
 
-const bluzmaCardContent = new Bluzma('CardContent')
-
-bluzmaCardContent.register()
+Bluzma.register('cardContent')
 
 // Card footer
 
-const bluzmaCardFooter = new Bluzma('CardFooter')
-
-bluzmaCardFooter.register()
+Bluzma.register('cardFooter')
 
 // Card footer item
 
-const bluzmaCardFooterItem = new Bluzma('CardFooterItem', ['href'])
-
-bluzmaCardFooterItem.register()
+Bluzma.register('cardFooterItem', ['content', 'href'], {
+  helpers: {
+    isA () {
+      const data = this.data()
+      return data.href || data.onClick
+    }
+  }
+})

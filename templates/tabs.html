@@ -1,4 +1,4 @@
-<template name="bluzmaTabs">
+<template name="tabs">
   <div class="tabs {{centered}} {{right}} {{size}} {{fullwidth}} {{toggle}} {{boxed}} {{toggleRounded}} {{class}}" {{others}}>
     <ul>
       {{> Template.contentBlock}}
@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<template name="bluzmaTab">
+<template name="tab">
   <li class=" {{active}} {{class}}" {{others}}>
     {{#if href}}
       <a href="{{href}}">{{label}}</a>

@@ -17,23 +17,3 @@
     {{> Template.contentBlock}}
   </div>
 </template>
-
-<template name="bluzmaButton">
-  {{#if href}}
-    <a class="button {{active}} {{color}} {{focused}} {{fullwidth}} {{hovered}} {{inverted}} {{loading}} {{outlined}} {{rounded}} {{selected}} {{size}} {{class}}" {{others}}>
-      {{content}}
-      {{> Template.contentBlock}}
-    </a>
-  {{else}}
-    <button class="button {{active}} {{color}} {{focused}} {{fullwidth}} {{hovered}} {{inverted}} {{loading}} {{outlined}} {{rounded}} {{selected}} {{size}} {{class}}" {{others}}>
-      {{content}}
-      {{> Template.contentBlock}}
-    </button>
-  {{/if}}
-</template>
-
-<template name="bluzmaButtons">
-  <div class="buttons {{addons}} {{centered}} {{left}} {{right}} {{class}}" {{others}}>
-    {{> Template.contentBlock}}
-  </div>
-</template>

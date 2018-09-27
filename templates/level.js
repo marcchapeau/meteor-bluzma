@@ -1,4 +1,4 @@
-import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './level.html'
 
@@ -6,7 +6,7 @@ import './level.html'
 
 // Level
 
-BluzmaComponent.register('lvl', ['mobile'], {
+Bluzma.register('level', ['mobile'], {
   helpers: {
     mobile () { return this.data().mobile && 'is-mobile' }
   }
@@ -14,12 +14,12 @@ BluzmaComponent.register('lvl', ['mobile'], {
 
 // Level left
 
-BluzmaComponent.register('lvlL')
+Bluzma.register('levelLeft')
 
 // Level right
 
-BluzmaComponent.register('lvlR')
+Bluzma.register('levelRight')
 
 // Level item
 
-BluzmaComponent.register('lvlI')
+Bluzma.register('levelItem')

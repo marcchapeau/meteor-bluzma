@@ -1,69 +1,35 @@
-import { Template } from 'meteor/templating'
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './table.html'
 
 // https://bulma.io/documentation/elements/table
 
-const bluzmaTable = new Bluzma('Table', [
+Bluzma.register('table', [
   'bordered', 'fullwidth', 'hoverable', 'narrow', 'responsive', 'striped'
-])
-
-bluzmaTable.helpers({
-  bordered () {
-    const bordered = Template.currentData().bordered
-    return bordered && `is-bordered`
-  },
-  fullwidth () {
-    const fullwidth = Template.currentData().fullwidth
-    return fullwidth && `is-fullwidth`
-  },
-  hoverable () {
-    const hoverable = Template.currentData().hoverable
-    return hoverable && `is-hoverable`
-  },
-  narrow () {
-    const narrow = Template.currentData().narrow
-    return narrow && `is-narrow`
-  },
-  striped () {
-    const striped = Template.currentData().striped
-    return striped && `is-striped`
+], {
+  helpers: {
+    bordered () { return this.data().bordered && `is-bordered` },
+    fullwidth () { return this.data().fullwidth && `is-fullwidth` },
+    hoverable () { return this.data().hoverable && `is-hoverable` },
+    narrow () { return this.data().narrow && `is-narrow` },
+    striped () { return this.data().striped && `is-striped` }
   }
 })
 
-bluzmaTable.register()
-
-const bluzmaTableRow = new Bluzma('TableRow', ['selected'])
-
-bluzmaTableRow.helpers({
-  selected () {
-    const selected = Template.currentData().selected
-    return selected && `is-selected`
+Bluzma.register('tableRow', ['selected'], {
+  helpers: {
+    selected () { return this.data().selected && `is-selected` }
   }
 })
 
-bluzmaTableRow.register()
-
-const bluzmaTableCell = new Bluzma('TableCell', ['selected'])
-
-bluzmaTableCell.helpers({
-  selected () {
-    const selected = Template.currentData().selected
-    return selected && `is-selected`
+Bluzma.register('tableCell', ['selected'], {
+  helpers: {
+    selected () { return this.data().selected && `is-selected` }
   }
 })
 
-bluzmaTableCell.register()
+Bluzma.register('tableHead')
 
-const bluzmaTableHead = new Bluzma('TableHead')
+Bluzma.register('tableBody')
 
-bluzmaTableHead.register()
-
-const bluzmaTableBody = new Bluzma('TableBody')
-
-bluzmaTableBody.register()
-
-const bluzmaTableFoot = new Bluzma('TableFoot')
-
-bluzmaTableFoot.register()
+Bluzma.register('tableFoot')

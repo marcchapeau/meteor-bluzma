@@ -1,18 +1,17 @@
-import { Template } from 'meteor/templating'
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './breadcrumb.html'
 
 // https://bulma.io/documentation/components/breadcrumb
 
-const bluzmaBreadcrumb = new Bluzma('Breadcrumb')
+// Breadcrumb
 
-bluzmaBreadcrumb.register()
+Bluzma.register('breadcrumb')
 
-const bluzmaBreadcrumbItem = new Bluzma('BreadcrumbItem', ['active', 'content', 'href'])
+// Breadcrumb item
 
-bluzmaBreadcrumbItem.helpers({
-  active: () => Template.currentData().active && 'is-active'
+Bluzma.register('breadcrumbItem', ['active', 'content', 'href'], {
+  helpers: {
+    active () { return this.data().active && 'is-active' }
+  }
 })
-
-bluzmaBreadcrumbItem.register()

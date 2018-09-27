@@ -1,5 +1,5 @@
-import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './link.html'
 
-BluzmaComponent.register('link', ['content'])
+Bluzma.register('link', ['content'])

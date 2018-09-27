@@ -1,9 +1,3 @@
-<template name="tags">
-  <div class="tags {{addons}} {{class}}" {{others}}>
-    {{> Template.contentBlock}}
-  </div>
-</template>
-
 <template name="tag">
   {{#if isA}}
     <a class="tag {{color}} {{delete}} {{size}} {{class}}" {{others}}>
@@ -22,4 +16,10 @@
       {{/if}}
     </span>
   {{/if}}
+</template>
+
+<template name="tags">
+  <div class="tags {{addons}} {{class}}" {{others}}>
+    {{> Template.contentBlock}}
+  </div>
 </template>

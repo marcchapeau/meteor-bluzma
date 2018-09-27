@@ -1,13 +1,13 @@
-<template name="bluzmaMessage">
+<template name="message">
   <article class="message {{color}} {{size}} {{class}}" {{others}}>
     {{#if content}}
-      {{> bluzmaMessageBody content=content}}
+      {{> messageBody content=content}}
     {{/if}}
     {{> Template.contentBlock}}
   </article>
 </template>
 
-<template name="bluzmaMessageHeader">
+<template name="messageHeader">
   <div class="message-header {{class}}" {{others}}>
     {{#if content}}
       <p>{{content}}</p>
@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<template name="bluzmaMessageBody">
+<template name="messageBody">
   <div class="message-body {{class}}" {{others}}>
     {{content}}
     {{> Template.contentBlock}}

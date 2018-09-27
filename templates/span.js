@@ -1,5 +1,5 @@
-import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './span.html'
 
-BluzmaComponent.register('buttons', ['content'])
+Bluzma.register('span', ['content'])

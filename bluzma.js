@@ -1,6 +1,3 @@
-import { EJSON } from 'meteor/ejson'
-import { ReactiveDict } from 'meteor/reactive-dict'
-import { ReactiveVar } from 'meteor/reactive-var'
 import { Template } from 'meteor/templating'
 
 const DISPLAYS = {
@@ -93,71 +90,12 @@ CLASS.italic = () => 'is-italic'
 // Weight
 CLASS.textWeight = (weight) => `has-text-weight-${weight}`
 
-class Bluzma {
-  constructor (name, attributs = []) {
-    const instance = this
-    this.name = name
-    attributs = typeof attributs === 'function' ? attributs.apply(null) : attributs
-    this.attributs = ['onClick', ...attributs]
-    this._hooks = {}
-    this._helpers = {
-      class: function () {
-        const data = Template.currentData()
-        const res = `${Object.keys(data).filter(key => CLASS[key])
-          .map(key => CLASS[key](data[key])).join(' ')}${data.class ? ` ${data.class}` : ''}`
-        return res
-      },
-      others: function () {
-        const attributs = instance.attributs
-        const data = Template.currentData()
-        const res = Object.keys(data).filter(key => {
-          return !CLASS[key] && !attributs.includes(key) && key !== 'class'
-        }).reduce((others, key) => {
-          others[key] = data[key]
-          return others
-        }, {})
-        return res
-      }
-    }
-    this._events = {
-      'click' (tpl, evt) {
-        const onClick = Template.currentData().onClick
-        if (onClick) onClick.call(instance, tpl, evt)
-      }
-    }
-  }
-  hooks (hooks) { this._hooks = {...this._hooks, ...hooks} }
-  helpers (helpers) { this._helpers = {...this._helpers, ...helpers} }
-  events (events) { this._events = {...this._events, ...events} }
-  register () {
-    const instance = this
-    const name = `bluzma${this.name}`
-    Template[name].onCreated(function () {
-      if (instance._hooks.created) instance._hooks.created.call(this)
-    })
-    Template[name].onRendered(function () {
-      if (instance._hooks.rendered) instance._hooks.rendered.call(this)
-    })
-    Template[name].onDestroyed(function () {
-      if (instance._hooks.destroyed) instance._hooks.destroyed.call(this)
-    })
-    Template[name].helpers(this._helpers)
-    Template[name].events(this._events)
-  }
-}
-
-export default Bluzma
-
-export class BluzmaComponent {
+export class Bluzma {
   constructor (name, attributs) {
-    this.attributs = ['onClick', ...attributs]
-    this.dataContext = new ReactiveVar(undefined, (a, b) => {
-      return EJSON.equals(a, b)
-    })
+    this.attributs = ['onClick', 'onSubmit', ...attributs]
     this.name = name
-    this.props = new ReactiveDict()
-    this.state = new ReactiveDict()
   }
+  autorun (func) { this.template.autorun(func) }
   class () {
     const data = this.data()
     const globals = Object.keys(data).filter(key => !!CLASS[key]).map(key => {
@@ -165,11 +103,8 @@ export class BluzmaComponent {
     }).join(' ')
     return `${globals}${globals && data.class ? ' ' : ''}${data.class || ''}`
   }
-  currentData () { return Template.currentData() }
-  data () { return this.dataContext.get() }
-  autorun (func) { this.template.autorun(func) }
-  getProps (key) { return this.props.get(key) }
-  getState (key) { return this.state.get(key) }
+  data () { return Template.currentData() }
+  get (key) { return this.template[key] }
   others () {
     const data = this.data()
     return Object.keys(data).filter(key => {
@@ -179,17 +114,12 @@ export class BluzmaComponent {
       return others
     }, {})
   }
-  setState (key, value) { this.state.set(key, value) }
+  set (key, value) { this.template[key] = value }
   static register (name, attributs = [], options = {}) {
     const Component = this
     Template[name].onCreated(function () {
       this.component = new Component(name, attributs)
       this.component.template = this
-      this.component.autorun(() => {
-        const data = Template.currentData()
-        this.component.dataContext.set(data)
-        for (let key in data) this.component.props.set(key, data[key])
-      })
       if (options.hooks && options.hooks.created) {
         options.hooks.created.call(this.component)
       }
@@ -208,10 +138,7 @@ export class BluzmaComponent {
       ...options.helpers,
       class () { return this.class() },
       component () { return this },
-      currentData () { return this.currentData() },
-      data () { return this.data() },
-      others () { return this.others() },
-      state (key) { return this.getState(key) }
+      others () { return this.others() }
     }
     const helpers = {}
     for (let key in options.helpers) {
@@ -222,9 +149,13 @@ export class BluzmaComponent {
     Template[name].helpers(helpers)
     options.events = {
       ...options.events,
-      'click' (evt, tpl) {
+      'click' (e) {
         const onClick = this.data().onClick
-        if (onClick) onClick.call(this, evt)
+        if (onClick) onClick.call(this, e)
+      },
+      'submit' (e) {
+        const onSubmit = this.data().onSubmit
+        if (onSubmit) onSubmit.call(this, e)
       }
     }
     const events = {}

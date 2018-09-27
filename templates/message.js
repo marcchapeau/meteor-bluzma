@@ -1,29 +1,22 @@
-import { Template } from 'meteor/templating'
-import Bluzma from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './message.html'
 
 // https://bulma.io/documentation/components/message
 
-const bluzmaMessage = new Bluzma('Message', ['color', 'content', 'size'])
-
-bluzmaMessage.helpers({
-  color () {
-    const color = Template.currentData().color
-    return color && `is-${color}`
-  },
-  size () {
-    const size = Template.currentData().size
-    return size && `is-${size}`
+Bluzma.register('message', ['color', 'content', 'size'], {
+  helpers: {
+    color () {
+      const color = this.data().color
+      return color && `is-${color}`
+    },
+    size () {
+      const size = this.data().size
+      return size && `is-${size}`
+    }
   }
 })
 
-bluzmaMessage.register()
+Bluzma.register('messageHeader', ['content', 'delete'])
 
-const bluzmaMessageHeader = new Bluzma('MessageHeader', ['content', 'delete'])
-
-bluzmaMessageHeader.register()
-
-const bluzmaMessageBody = new Bluzma('MessageBody', ['content'])
-
-bluzmaMessageBody.register()
+Bluzma.register('messageBody', ['content'])

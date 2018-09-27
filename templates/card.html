@@ -1,56 +1,58 @@
-<template name="bluzmaCard">
+<template name="card">
   <div class="card {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </div>
 </template>
 
-<template name="bluzmaCardImage">
+<template name="cardImage">
   <div class="card-image {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </div>
 </template>
 
-<template name="bluzmaCardHeader">
+<template name="cardHeader">
   <header class="card-header {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </header>
 </template>
 
-<template name="bluzmaCardHeaderTitle">
+<template name="cardHeaderTitle">
   <p class="card-header-title {{class}}" {{others}}>
     {{content}}
     {{> Template.contentBlock}}
   </p>
 </template>
 
-<template name="bluzmaCardHeaderIcon">
-  <div class="card-header-icon {{class}}" {{others}}>
+<template name="cardHeaderIcon">
+  <a class="card-header-icon {{class}}" {{others}}>
     {{#if icon}}
-      {{> bluzmaIcon icon=icon}}
+      {{> icon icon=icon}}
     {{/if}}
     {{> Template.contentBlock}}
-  </div>
+  </a>
 </template>
 
-<template name="bluzmaCardContent">
+<template name="cardContent">
   <div class="card-content {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </div>
 </template>
 
-<template name="bluzmaCardFooter">
+<template name="cardFooter">
   <footer class="card-footer {{class}}" {{others}}>
     {{> Template.contentBlock}}
   </footer>
 </template>
 
-<template name="bluzmaCardFooterItem">
-  {{#if href}}
+<template name="cardFooterItem">
+  {{#if isA}}
     <a class="card-footer-item {{class}}" href="{{href}}" {{others}}>
+      {{content}}
       {{> Template.contentBlock}}
     </a>
   {{else}}
     <p class="card-footer-item {{class}}" {{others}}>
+      {{content}}
       {{> Template.contentBlock}}
     </p>
   {{/if}}

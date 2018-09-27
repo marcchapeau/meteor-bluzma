@@ -1,4 +1,4 @@
-import { BluzmaComponent } from 'meteor/chap:bluzma/bluzma'
+import { Bluzma } from 'meteor/chap:bluzma/bluzma'
 
 import './modal.html'
 
@@ -6,7 +6,7 @@ import './modal.html'
 
 //  Modal
 
-BluzmaComponent.register('modal', ['background'], {
+Bluzma.register('modal', ['background'], {
   helpers: {
     background () {
       const bg = this.data().background
@@ -17,16 +17,16 @@ BluzmaComponent.register('modal', ['background'], {
 
 //  Modal card
 
-BluzmaComponent.register('modalCard')
+Bluzma.register('modalCard')
 
 //  Modal card head
 
-BluzmaComponent.register('modalCardHead', ['content', 'delete'])
+Bluzma.register('modalCardHead', ['content', 'delete'])
 
 //  Modal card body
 
-BluzmaComponent.register('modalCardBody')
+Bluzma.register('modalCardBody')
 
 //  Modal card foot
 
-BluzmaComponent.register('modalCardFoot')
+Bluzma.register('modalCardFoot')
