@@ -41,7 +41,13 @@ Bluzma.register('columns', [
 
 // Column
 
-Bluzma.register('column', ['narrow', 'offset', 'size'], {
+const columnAttributs = ['narrow', 'offset', 'size']
+DEVICES.forEach(d => {
+  columnAttributs.push(`${d}Size`)
+  columnAttributs.push(`${d}Offset`)
+})
+
+Bluzma.register('column', columnAttributs, {
   helpers: {
     narrow () {
       const device = this.data().narrow
