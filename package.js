@@ -1,6 +1,6 @@
 Package.describe({
   name: 'chap:bluzma',
-  version: '0.5.6',
+  version: '0.6.0',
   summary: 'A set of Blaze components for Bulma',
   git: 'https://github.com/marcchapeau/meteor-bluzma.git',
   documentation: 'README.md'
@@ -11,6 +11,7 @@ Package.onUse(function (api) {
   api.use('ecmascript')
   api.use('templating@1.3.2')
   api.addFiles([
+    'templates/box.js',
     'templates/breadcrumb.js',
     'templates/button.js',
     'templates/card.js',
