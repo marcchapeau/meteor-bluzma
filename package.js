@@ -1,6 +1,6 @@
 Package.describe({
   name: 'chap:bluzma',
-  version: '0.5.5',
+  version: '0.5.6',
   summary: 'A set of Blaze components for Bulma',
   git: 'https://github.com/marcchapeau/meteor-bluzma.git',
   documentation: 'README.md'

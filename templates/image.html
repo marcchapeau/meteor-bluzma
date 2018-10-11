@@ -1,7 +1,7 @@
 <template name="image">
   <figure class="image {{ratio}} {{size}} {{class}}" {{others}}>
     {{#if src}}
-      {{> bluzmaImg class="{{rounded}}" src="{{src}}"}}
+      {{> img class=rounded src=src}}
     {{/if}}
     {{> Template.contentBlock}}
   </figure>
