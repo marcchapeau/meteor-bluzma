@@ -1,6 +1,6 @@
 <template name="tag">
   {{#if isA}}
-    <a class="tag {{color}} {{delete}} {{size}} {{class}}" {{others}}>
+    <a class="tag {{color}} {{delete}} {{rounded}} {{size}} {{class}}" {{others}}>
       {{content}}
       {{> Template.contentBlock}}
       {{#if onDelete}}
@@ -8,7 +8,7 @@
       {{/if}}
     </a>
   {{else}}
-    <span class="tag {{color}} {{delete}} {{size}} {{class}}" {{others}}>
+    <span class="tag {{color}} {{delete}} {{rounded}} {{size}} {{class}}" {{others}}>
       {{content}}
       {{> Template.contentBlock}}
       {{#if onDelete}}

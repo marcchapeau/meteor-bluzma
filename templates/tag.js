@@ -6,7 +6,7 @@ import './tag.html'
 
 // Tag
 
-Bluzma.register('tag', ['content', 'delete'], {
+Bluzma.register('tag', ['color', 'content', 'delete', 'rounded', 'size'], {
   helpers: {
     color () {
       const color = this.data().color
@@ -22,6 +22,7 @@ Bluzma.register('tag', ['content', 'delete'], {
       return data.href || data.onClick
     },
     onDelete () { return !!this.data().onDelete },
+    rounded () { return this.data().rounded && 'is-rounded' },
     size () {
       const size = this.data().size
       return size && `is-${size}`
