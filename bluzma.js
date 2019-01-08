@@ -148,7 +148,6 @@ export class Bluzma {
     }
     Template[name].helpers(helpers)
     options.events = {
-      ...options.events,
       'click' (e) {
         const onClick = this.data().onClick
         if (onClick) onClick.call(this, e)
@@ -156,7 +155,8 @@ export class Bluzma {
       'submit' (e) {
         const onSubmit = this.data().onSubmit
         if (onSubmit) onSubmit.call(this, e)
-      }
+      },
+      ...options.events
     }
     const events = {}
     for (let key in options.events) {

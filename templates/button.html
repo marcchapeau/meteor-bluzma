@@ -1,11 +1,11 @@
 <template name="button">
   {{#if href}}
-    <a class="button {{active}} {{color}} {{focused}} {{fullwidth}} {{hovered}} {{inverted}} {{loading}} {{outlined}} {{rounded}} {{selected}} {{size}} {{class}}" {{others}}>
+    <a class="button {{active}} {{color}} {{focused}} {{fullwidth}} {{hovered}} {{inverted}} {{loading}} {{outlined}} {{rounded}} {{selected}} {{size}} {{class}}" {{disabled}} {{others}}>
       {{content}}
       {{> Template.contentBlock}}
     </a>
   {{else}}
-    <button class="button {{active}} {{color}} {{focused}} {{fullwidth}} {{hovered}} {{inverted}} {{loading}} {{outlined}} {{rounded}} {{selected}} {{size}} {{class}}" {{others}}>
+    <button class="button {{active}} {{color}} {{focused}} {{fullwidth}} {{hovered}} {{inverted}} {{loading}} {{outlined}} {{rounded}} {{selected}} {{size}} {{class}}" {{disabled}} {{others}}>
       {{content}}
       {{> Template.contentBlock}}
     </button>
